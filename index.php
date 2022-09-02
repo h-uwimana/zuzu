@@ -8,7 +8,7 @@
 </head>
 <body>
 <!--navbar-->
-<nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
     <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">ZUZU</a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
@@ -24,11 +24,14 @@
         </div>
     </div>
 </nav>
-
-<section class="bg-success container-fluid pt-5">
+<!--end navbar-->
+<!--top image-->
+    <section class="bg-success container-fluid pt-5">
     <div class="pt-5"></div>
 </section>
-<section class=" container-sm  mt-3">
+<!--end top image--->
+<!--main page-->
+    <section class=" container-sm  mt-3">
     <div class="row">
         <div class="col-12 text-center">
             <h1>
@@ -82,6 +85,18 @@
     </div>
     </div>
 </section>
+<!--end main page-->
+<!--footer-->
+    <footer class=" position-absolute bottom-0 container-fluid navbar   bg-dark">
+            <div class=" container-fluid text-light">
+            <div class=" container-fluid text-light">
+                <div class="row">
+                    <div class="col-6">heelo<div>
+                    <div class="col-6">ehee<div>
+                </div>
+            <div>
+    </footer>
+<!--end footer-->
 
 </body>
 <script>
