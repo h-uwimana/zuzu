@@ -30,7 +30,7 @@
     <div class="pt-5"></div>
 </section>
 <!--end top image--->
-<!--main page-->
+<!--main page--><!--main page-->
     <section class=" container-sm  mt-3">
     <div class="row">
         <div class="col-12 text-center">
@@ -65,9 +65,9 @@
             </p>
         </div>
     </div>
-    <div class="row text-center">
+    <div class=" row text-center">
         <div class="col d-flex justify-content-center">
-            <div class="card " style="width: 20rem;
+            <div class="card " style="width: 100%;
             ">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
@@ -76,7 +76,7 @@
         </div>
     </div>
     <div class="col d-flex justify-content-center">
-        <div class="card "  style="width: 20rem;">
+        <div class="card "  style="width: 100%;">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text">Keuze uit verschillende soorten sushi's</span>
@@ -87,12 +87,27 @@
 </section>
 <!--end main page-->
 <!--footer-->
-    <footer class=" position-absolute bottom-0 container-fluid navbar   bg-dark">
-            <div class=" container-fluid text-light">
-            <div class=" container-fluid text-light">
+    <footer class=" position-absolute bottom-0 container-fluid bg-dark">
+            <div class=" container-fluid text-center text-light">
                 <div class="row">
-                    <div class="col-6">heelo<div>
-                    <div class="col-6">ehee<div>
+                    <div class="col my-4">
+                        <p class="m-0"><strong>Contactgegevens</strong></p>
+                        <p class="m-0">Restaurant ZuZu</p>
+                        <p class="m-0">Appelstraat 1</p>
+                        <p class="m-0">1111a Fruit</p>
+                        <p class="m-0">zuzu@gamil.com</p>
+                        <p class="m-0">06-12345678</p>
+                    </div>
+                    <div class="col mt-4">
+                        <p class="m-0"><strong>Openingstijden</strong></p>
+                        <p class="m-0">Maandag:</p>
+                        <p class="m-0">Dinsdag:</p>
+                        <p class="m-0">Woensdag:</p>
+                        <p class="m-0">Donderdag:</p>
+                        <p class="m-0">Vrijdag:</p>
+                        <p class="m-0">Zaterdag:</p>
+                        <p class="m-0">Zondag:</p>
+                    </div>
                 </div>
             <div>
     </footer>
