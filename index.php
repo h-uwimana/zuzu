@@ -26,7 +26,9 @@
 </nav>
 <!--end navbar-->
 <!--top image-->
-    <section class="bg-success container-fluid pt-5">
+    <section class=" container-fluid pt-5" style="
+        background: url('img/headerimage.png');
+        background-size: cover;">
     <div class="pt-5"></div>
 </section>
 <!--end top image--->
@@ -39,7 +41,7 @@
             </h1>
         </div>
         <div class="col-12 text-center">
-            <span class="fw-lighter">Wij zijn gespecialiseerd  in de Japanse keuken</span>
+            <span class="fw-lighter">Wij zijn gespecialiseerd in de Japanse keuken</span>
             <p class="fw-lighter"> Het woord "sushi" is afkomstig van "su", wat azijn betekent en "shi" - rijst</p>
         </div>
         <div class="col-12 text-center">
@@ -65,19 +67,25 @@
             </p>
         </div>
     </div>
-    <div class=" row text-center">
+    <div class=" row text-center mb-4">
         <div class="col d-flex justify-content-center">
             <div class="card " style="width: 100%;
             ">
-            <img src="..." class="card-img-top" alt="...">
+                <div class="card-img-top"
+                     style="
+                     height: 100%;
+                     background: url('img/img1.jpeg');
+                     background-size: cover;"
+
+                ></div>
             <div class="card-body">
                 <span class="card-text">Bestel bij ons je sushi</span>
             </div>
         </div>
     </div>
     <div class="col d-flex justify-content-center">
-        <div class="card "  style="width: 100%;">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card " style="width=100%;">
+            <img src="img/img2.webp"  class="card-img-top" alt="...">
             <div class="card-body">
                 <span class="card-text">Keuze uit verschillende soorten sushi's</span>
             </div>
@@ -87,7 +95,7 @@
 </section>
 <!--end main page-->
 <!--footer-->
-    <footer class=" position-absolute bottom-0 container-fluid bg-dark">
+    <footer class="bottom-0 container-fluid bg-dark">
             <div class=" container-fluid text-center text-light">
                 <div class="row">
                     <div class="col my-4">
