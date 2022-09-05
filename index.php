@@ -9,12 +9,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <!--navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <nav class=" index  top-0 navbar navbar-expand-lg navbar-light bg-dark ">
     <div class="container-fluid">
-        <a class="navbar-brand text-light" href="#">ZUZU</a>
+        <a class="navbar-brand text-light" href="index.php">ZUZU</a>
         <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,8 +23,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
-                <a class="nav-link active text-light" href="#">Bestellen</a>
+                <a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
+                <a class="nav-link active text-light" href="klantgegevens.php">Bestellen</a>
             </div>
         </div>
     </div>
@@ -75,13 +76,15 @@
         <div class="col d-flex justify-content-center">
             <div class="card " style="width: 100%;
             ">
-                <div class="card-img-top"
+               <a href="klantgegevens.php" style=" height:100%">
+                   <div class="card-img-top" id="img"
                      style="
                      height: 100%;
                      background: url('img/img1.jpeg');
                      background-size: cover;"
 
-                ></div>
+                >
+                </div></a>
             <div class="card-body">
                 <span class="card-text">Bestel bij ons je sushi</span>
             </div>
@@ -89,7 +92,7 @@
     </div>
     <div class="col d-flex justify-content-center">
         <div class="card " style="width=100%;">
-            <img src="img/img2.webp"  class="card-img-top" alt="...">
+            <a href="klantgegevens.php"><img src="img/img2.webp"  class="card-img-top" alt="..."></a>
             <div class="card-body">
                 <span class="card-text">Keuze uit verschillende soorten sushi's</span>
             </div>
@@ -128,5 +131,7 @@
 </body>
 <script>
 
+    
+    
 </script>
 </html>

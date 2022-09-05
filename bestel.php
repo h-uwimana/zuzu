@@ -6,13 +6,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style.css">
         <title>ZUZU-Homepage</title>
     </head>
     <body>
     <!--navbar-->
-    <nav class="navbar position-sticky top-0 navbar-expand-lg navbar-light bg-dark ">
+    <nav class="navbar  navbar-expand-lg navbar-light bg-dark ">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="#">ZUZU</a>
+            <a class="navbar-brand text-light" href="index.php">ZUZU</a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,8 +21,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
-                    <a class="nav-link active text-light" href="#">Bestellen</a>
+                    <a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
+                    <a class="nav-link active text-light" href="bestel.php">Bestellen</a>
                 </div>
             </div>
         </div>
@@ -37,6 +38,12 @@
     <!--main page--><!--main page-->
     <section class=" container-sm  mt-3">
         <h1> Sushi's bestellen</h1>
+        <?php
+            if(isset($_POST["bestel"])){
+
+                echo $_POST["makiKomkommer"];
+            }
+        ?>
         <div class="w-50 fw-bold">
             <form method="post">
 
@@ -76,14 +83,9 @@
                     </label>
                     <input type="text" class="form-control" name="californiaRoll">
                 </div>
-                <button type="submit" class="btn btn-dark" name="verzenden">Verzenden</button>
+                <button type="submit" class="btn btn-dark" name="bestel">Verzenden</button>
             </form>
-            <?php
-                        if(isset($_POST["verzenden"])){
 
-                            echo $_POST["spicyTunaRoll"];
-                        }
-                ?>
         </div>
     </section>
     <!--end main page-->
