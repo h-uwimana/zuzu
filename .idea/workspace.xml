@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85fe94c3-d7d8-4976-94ed-9d0d240521b2" name="Changes" comment="" />
+    <list default="true" id="85fe94c3-d7d8-4976-94ed-9d0d240521b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +14,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php8.1.9" />
   <component name="ProjectId" id="2EMYkCntNBwTDkfy6q0Fx7S0sh5" />
@@ -33,7 +38,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662407066845</updated>
-      <workItem from="1662407070004" duration="1465000" />
+      <workItem from="1662407070004" duration="1426000" />
+      <workItem from="1662459471082" duration="2774000" />
     </task>
     <servers />
   </component>
