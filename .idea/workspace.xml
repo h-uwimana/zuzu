@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77350434-09fc-4af4-99e4-bdafd0a595f2" name="Changes" comment="" />
+    <list default="true" id="85fe94c3-d7d8-4976-94ed-9d0d240521b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,14 +15,8 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php8.1.9" />
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2ELySuJ3U8Ln0rdqOX7xsbp5sCP" />
+  <component name="ProjectId" id="2EMYkCntNBwTDkfy6q0Fx7S0sh5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,16 +30,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="77350434-09fc-4af4-99e4-bdafd0a595f2" name="Changes" comment="" />
-      <created>1662389162238</created>
+      <changelist id="85fe94c3-d7d8-4976-94ed-9d0d240521b2" name="Changes" comment="" />
+      <created>1662407066845</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1662389162238</updated>
-      <workItem from="1662389165540" duration="1854000" />
-      <workItem from="1662393371567" duration="3432000" />
-      <workItem from="1662397368163" duration="1416000" />
-      <workItem from="1662403237625" duration="13000" />
-      <workItem from="1662403259499" duration="55000" />
+      <updated>1662407066845</updated>
+      <workItem from="1662407070004" duration="1426000" />
     </task>
     <servers />
   </component>
