@@ -1,5 +1,6 @@
 <?php
-    require "php.php";
+    require "include/config.php";
+
 ?>
 
 <html lang="html">
@@ -64,6 +65,16 @@
                 $formatted_date = datefmt_format($fmt, time());
 
                 echo "Vandaag " . $formatted_date;
+
+                    try{
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+                    }
+                    catch (PDOException $e) {
+                        echo "Error : " . $e->getMessage() . "<br/>";
+                        die();
+                    }
 
                 ?>
             </span>
