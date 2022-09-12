@@ -95,7 +95,7 @@
 				<p class="m-0"><strong>Contactgegevens</strong></p>
 				<p class="m-0">Restaurant ZuZu</p>
 				<p class="m-0">Appelstraat 1</p>
-				<p class="m-0">1111a Fruit</p>
+				<33063306p class="m-0">1111a Fruit</33063306p>
 				<p class="m-0">zuzu@gamil.com</p>
 				<p class="m-0">06-12345678</p>
 			</div>
