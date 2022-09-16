@@ -88,7 +88,7 @@
             <div class="card " style="width: 100%;
             ">
                <a href="klantgegevens.php" style=" height:100%">
-                   <div class="card-img-top" id="img"
+                   <div onmouseover="this.style.cursor='pointer'" class="card-img-top" id="img"
                      style="
                      height: 100%;
                      background: url('img/img1.jpeg');
@@ -103,7 +103,8 @@
     </div>
     <div class="col d-flex justify-content-center">
         <div class="card " style="width=100%;">
-            <a href="klantgegevens.php"><img src="img/img2.webp"  class="card-img-top" alt="..."></a>
+            <a href="klantgegevens.php"><img src="img/img2.webp" onmouseover="this.style
+            .cursor='pointer'" class="card-img-top" alt="..."></a>
             <div class="card-body">
                 <span class="card-text">Keuze uit verschillende soorten sushi's</span>
             </div>
