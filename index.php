@@ -1,16 +1,12 @@
-<?php
-    require "include/config.php";
 
-?>
 
-<html lang="html">
+<html lang="nl">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <!--navbar-->
@@ -51,21 +47,13 @@
             <p class="fw-lighter"> Het woord "sushi" is afkomstig van "su", wat azijn betekent en "shi" - rijst</p>
         </div>
         <div class="col-12 text-center">
-
             <span>
                 <?php
-
+                    setlocale(LC_TIME, 'nl_nl');
                     date_default_timezone_set("Europe/Amsterdam");
-                    $fmt = datefmt_create(
-                    NULL,
-                    IntlDateFormatter::FULL,
-                    IntlDateFormatter::NONE,
-                    NULL,
-                    IntlDateFormatter::GREGORIAN,
-                );
-                $formatted_date = datefmt_format($fmt, time());
-
-                echo "Vandaag " . $formatted_date;
+                    // output
+//
+                    echo "Vandaag " . strftime("%A %B %Y", );
 
 
                 ?>
