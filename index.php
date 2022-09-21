@@ -54,32 +54,24 @@
 
             <span>
                 <?php
-                $time = date("H:i");
-                $fmt = datefmt_create(
-                    'nld_nld',
+
+                    date_default_timezone_set("Europe/Amsterdam");
+                    $fmt = datefmt_create(
+                    NULL,
                     IntlDateFormatter::FULL,
                     IntlDateFormatter::NONE,
-                    'Europe/Amsterdam',
+                    NULL,
                     IntlDateFormatter::GREGORIAN,
                 );
                 $formatted_date = datefmt_format($fmt, time());
 
                 echo "Vandaag " . $formatted_date;
 
-                    try{
-                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-                    }
-                    catch (PDOException $e) {
-                        echo "Error : " . $e->getMessage() . "<br/>";
-                        die();
-                    }
 
                 ?>
             </span>
             <p class="">
-                Bezorgtijd vanaf nu: <?php echo $time; ?>
+                Bezorgtijd vanaf nu: <?php echo date("H:i"); ?>
             </p>
         </div>
     </div>
