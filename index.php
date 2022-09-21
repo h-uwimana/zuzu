@@ -39,7 +39,15 @@
     <div class="row">
         <div class="col-12 text-center">
             <h1>
-                Goedemiddag, welkom bij ZuZu
+                <?php
+                    
+                    $date = date("G");
+                    switch($date){
+                        case $date >= 6 && $date <= 12: echo "GoedeMorgen, welkom bij ZuZu"; break;
+                        case $date >= 13 && $date < 18: echo "Goedemiddag, welkom bij ZuZu"; break;
+                        default: echo "Goedenavond, welkom bij ZuZu"; break;
+                    }
+                ?>
             </h1>
         </div>
         <div class="col-12 text-center">
@@ -102,7 +110,7 @@
                         <p class="m-0">Restaurant ZuZu</p>
                         <p class="m-0">Appelstraat 1</p>
                         <p class="m-0">1111a Fruit</p>
-                        <p class="m-0">zuzu@gamil.com</p>
+                        <p class="m-0">zuzu@gmail.com</p>
                         <p class="m-0">06-12345678</p>
                     </div>
                     <div class="col mt-4">
