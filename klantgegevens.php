@@ -1,4 +1,27 @@
+<?php
+    
+    session_start();
+    $_SESSION["username"] = "hussein";
+    if(isset($_POST['klant'])){
+        if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["mail"]) && !empty($_POST["adres"]) &&
+                !empty($_POST["postcode"]) && !empty($_POST["city"])){
+            $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
+            $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
+            $mail = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
+            $adres = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_SPECIAL_CHARS);
+            $postcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_SPECIAL_CHARS);
+            $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            $melding = $mail.  $firstname;
+            
+        }else{
+            $melding = "niet alles is ingevuld";
+        }
+    }else{
+        $melding = "Vul alle velden in";
+    }
 
+?>
 <html lang="html">
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -38,7 +61,7 @@
 <section class=" container-sm  mt-3">
 	<h1> Klantgegevens</h1>
 	<div class="w-50 fw-bold">
-		<form method="post" action="bestel.php">
+		<form method="post" >
 
 			<div class="mb-3  ">
 				<label for="exampleInputEmail1" class="form-label">
@@ -79,10 +102,9 @@
 			<button type="submit" class="btn btn-dark" name="klant">Ga naar sushi's</button>
 		</form>
 		<?php
-			if(isset($_POST["klant"])){
-
-				echo $_POST["firstname"];
-			}
+			
+            
+            echo $melding;
 		?>
 	</div>
 </section>

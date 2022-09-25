@@ -1,4 +1,9 @@
+<?php
+    
+session_start()
 
+
+?>
 
 <html lang="nl">
 <head>
