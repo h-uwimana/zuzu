@@ -5,15 +5,12 @@
     if(isset($_POST['klant'])){
         if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["mail"]) && !empty($_POST["adres"]) &&
                 !empty($_POST["postcode"]) && !empty($_POST["city"])){
-            $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
-            $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
-            $mail = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
-            $adres = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_SPECIAL_CHARS);
-            $postcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_SPECIAL_CHARS);
-            $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_SPECIAL_CHARS);
-            
-            $melding = $mail.  $firstname;
-            
+            $_SESSION["firstname"] = $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["lastname"] = $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["mail"] = $mail = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
+            $_SESSION["adres"] = $adres = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["postcode"] = $postcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["city"] = $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_SPECIAL_CHARS);
         }else{
             $melding = "niet alles is ingevuld";
         }
@@ -61,51 +58,65 @@
 <section class=" container-sm  mt-3">
 	<h1> Klantgegevens</h1>
 	<div class="w-50 fw-bold">
-		<form method="post" >
+		<form method="post" class="needs-validation"  novalidate>
 
 			<div class="mb-3  ">
-				<label for="exampleInputEmail1" class="form-label">
+				<label for="firstname" class="form-label">
 					Voornaam
 				</label>
-				<input type="text" class="form-control" name="firstname">
+				<input id="firstname" type="text" class="form-control" name="firstname" required>
+                <div class="invalid-feedback">
+                    Vul uw voornaam in.
+                </div>
 			</div>
 			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label">
+				<label for="lastname" class="form-label">
 					Achternaam
 				</label>
-				<input type="text" class="form-control" name="lastname">
+				<input id="lastname" type="text" class="form-control" name="lastname" required>
+                <div class="invalid-feedback">
+                    Vul uw achtenaam in.
+                </div>
 			</div>
 			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label">
+				<label for="mail" class="form-label">
 					Email
 				</label>
-				<input type="mail" class="form-control" name="mail">
+				<input id="mail" type="email" class="form-control" name="mail" required>
+                <div class="invalid-feedback">
+                    Vul een geldige e-mail in.
+                </div>
 			</div>
 			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label">
+				<label for="adres" class="form-label">
 					Adres
 				</label>
-				<input type="text" class="form-control" name="adres">
+				<input id="adres" type="text" class="form-control" name="adres" required>
+                <div class="invalid-feedback">
+                    Vul uw adres in.
+                </div>
 			</div>
 			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label">
+				<label for="postcode" class="form-label">
 					Postcode
 				</label>
-				<input type="text" class="form-control" name="postcode">
+				<input id="postcode" type="text" class="form-control" name="postcode" required>
+                <div class="invalid-feedback">
+                    Vul uw postcode in.
+                </div>
 			</div>
 			<div class="mb-3">
-				<label for="exampleInputPassword1" class="form-label">
+				<label for="city" class="form-label">
 					Woonplaats
 				</label>
-				<input type="text" class="form-control" name="city">
+				<input id="city" type="text" class="form-control" name="city" required>
+                <div class="invalid-feedback">
+                    Vul uw woonplaats in.
+                </div>
 			</div>
 			<button type="submit" class="btn btn-dark" name="klant">Ga naar sushi's</button>
 		</form>
-		<?php
-			
-            
-            echo $melding;
-		?>
+		
 	</div>
 </section>
 <!--end main page-->
@@ -138,6 +149,26 @@
 
 </body>
 <script>
-
+    
+    (function () {
+        'use strict'
+        
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+    })()
+    
 </script>
 </html>

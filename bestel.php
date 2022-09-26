@@ -45,43 +45,43 @@
             }
         ?>
         <div class="w-50 fw-bold">
-            <form method="post">
+            <form method="post" class="needs-validation"  novalidate>
 
                 <div class="mb-3  ">
                     <label for="exampleInputEmail1" class="form-label">
                         Maki komkommer <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="text" class="form-control" name="makiKomkommer">
+                    <input type="number" class="form-control" name="makiKomkommer">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Maki Avocado <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input type="text" class="form-control" name="makiAvocado">
+                    <input type="number" class="form-control" name="makiAvocado">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Nigiri zalm <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input type="text" class="form-control" name="nagiriZalm">
+                    <input type="number" class="form-control" name="nagiriZalm">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Philadelphia Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="text" class="form-control" name="philadelphiaRoll">
+                    <input type="number" class="form-control" name="philadelphiaRoll">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Spicy Tuna Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="text" class="form-control" name="spicyTunaRoll">
+                    <input type="number" class="form-control" name="spicyTunaRoll">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         California Roll <small class="fw-light fst-italic">(max = 8)</small>
                     </label>
-                    <input type="text" class="form-control" name="californiaRoll">
+                    <input type="number" class="form-control" name="californiaRoll">
                 </div>
                 <button type="submit" class="btn btn-dark" name="bestel">Verzenden</button>
             </form>
