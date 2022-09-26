@@ -1,12 +1,53 @@
+<!DOCTYPE html>
 
-<html lang="html">
+<?php
+    session_start();
+    
+if(isset($_POST["submit"])){
+    if(!empty($_POST["makiKomkommer"]) && !empty($_POST["makiAvocado"]) && !empty($_POST["nagiriZalm"]) && !empty($_POST["philadelphiaRoll"]) &&
+            !empty($_POST["spicyTunaRoll"]) && !empty($_POST["californiaRoll"])){
+    
+        
+        
+        $makiKomkommer = $_SESSION["makiKomkommer"]  = filter_input(INPUT_POST, "makiKomkommer", FILTER_VALIDATE_INT);
+        $makiAvocado = $_SESSION["makiAvocado"] =  filter_input(INPUT_POST, "makiAvocado", FILTER_VALIDATE_INT);
+        $nagiriZalm = $_SESSION["nagiriZalm"] = filter_input(INPUT_POST, "nagiriZalm", FILTER_VALIDATE_INT);
+        $philadelphiaRoll = $_SESSION["philadelphiaRoll"] = filter_input(INPUT_POST, "philadelphiaRoll", FILTER_VALIDATE_INT);
+        $spicyTunaRoll = $_SESSION["spicyTunaRoll"] =  filter_input(INPUT_POST, "spicyTunaRoll", FILTER_VALIDATE_INT);
+        $californiaRoll = $_SESSION["californiaRoll"] =  filter_input(INPUT_POST, "californiaRoll", FILTER_VALIDATE_INT);
+        
+        $sushi = array($makiKomkommer, $makiAvocado, $nagiriZalm, $philadelphiaRoll, $spicyTunaRoll, $californiaRoll);
+        $aantal = array(5, 10 ,10, 5, 5, 8);
+        
+        
+        forEach($sushi as $index => $sushi){
+            echo $sushi . " ". $index. " ";
+            switch(isset($_POST["submit"])){
+        
+                case $sushi > $aantal[$index] :
+            
+                    $melding =      "";
+                        break;
+                
+                case $sushi === 0 : $textLaag = "uw heeft niks niks ingevuld";
+                
+        
+            }
+        }
+        
+    }
+}
+
+?>
+
+
+<html lang="nl">
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/style.css">
         <title>ZUZU-Homepage</title>
     </head>
     <body>
@@ -39,10 +80,12 @@
     <section class=" container-sm  mt-3">
         <h1> Sushi's bestellen</h1>
         <?php
-            if(isset($_POST["bestel"])){
-
-                echo $_POST["makiKomkommer"];
-            }
+    
+//            if(isset($_POST["submit"])){
+//
+//                echo $makiKomkommer. $makiAvocado. $nagiriZalm. $philadelphiaRoll. $spicyTunaRoll. $californiaRoll ;
+//            }
+            
         ?>
         <div class="w-50 fw-bold">
             <form method="post" class="needs-validation"  novalidate>
@@ -51,41 +94,60 @@
                     <label for="exampleInputEmail1" class="form-label">
                         Maki komkommer <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="number" class="form-control" name="makiKomkommer">
+                    <input id="input" type="number" class="form-control" name="makiKomkommer" required>
+                <div id="feedback" class="invalid-feedback">
+                    Vul het juiste aantal in
+                </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Maki Avocado <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input type="number" class="form-control" name="makiAvocado">
+                    <input id="input" type="number" class="form-control" name="makiAvocado" required>
+                <div id="feedback" class="invalid-feedback">
+                    Vul het juiste aantal in
+                </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Nigiri zalm <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input type="number" class="form-control" name="nagiriZalm">
+                    <input id="input" type="number" class="form-control" name="nagiriZalm" required>
+                <div id="feedback" class="invalid-feedback">
+                    Vul het juiste aantal in
+                </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Philadelphia Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="number" class="form-control" name="philadelphiaRoll">
+                    <input id="input" type="number" class="form-control" name="philadelphiaRoll" required>
+                <div id="feedback" class="invalid-feedback">
+                    Vul het juiste aantal in
+                </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Spicy Tuna Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="number" class="form-control" name="spicyTunaRoll">
+                    <input id="input" type="number" class="form-control" name="spicyTunaRoll" required>
+                <div id="feedback" class="invalid-feedback">
+                    Vul het juiste aantal in
+                </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         California Roll <small class="fw-light fst-italic">(max = 8)</small>
                     </label>
-                    <input type="number" class="form-control" name="californiaRoll">
+                    <input id="input" type="number" class="form-control " name="californiaRoll"
+                           required>
+                <div id="feedback" class="invalid-feedback">
+                    Vul het juiste aantal in
                 </div>
-                <button type="submit" class="btn btn-dark" name="bestel">Verzenden</button>
+                </div>
+                <button type="submit" class="btn btn-dark" name="submit">Verzenden</button>
             </form>
-
+             <br>
         </div>
     </section>
     <!--end main page-->
@@ -118,6 +180,37 @@
 
     </body>
     <script>
-
+    
+        (function () {
+            'use strict'
+        
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.querySelectorAll('.needs-validation')
+            let invul = document.querySelectorAll("#input")
+            const feedBack = document.querySelectorAll('#feedback');
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                    .forEach(function (form, index) {
+                        console.log(form[index])
+                        
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                                
+                                
+                            }
+                            
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            
+            
+        })()
     </script>
+
+<?php
+
+
+?>
 </html>

@@ -2,15 +2,17 @@
     
     session_start();
     $_SESSION["username"] = "hussein";
-    if(isset($_POST['klant'])){
+    if(isset($_POST['submit'])){
         if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["mail"]) && !empty($_POST["adres"]) &&
                 !empty($_POST["postcode"]) && !empty($_POST["city"])){
-            $_SESSION["firstname"] = $firstname = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
-            $_SESSION["lastname"] = $lastname = filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
-            $_SESSION["mail"] = $mail = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
-            $_SESSION["adres"] = $adres = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_SPECIAL_CHARS);
-            $_SESSION["postcode"] = $postcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_SPECIAL_CHARS);
-            $_SESSION["city"] = $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["firstname"]  = filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["lastname"] =  filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["mail"] = filter_input(INPUT_POST, "mail", FILTER_VALIDATE_EMAIL);
+            $_SESSION["adres"] = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["postcode"] =  filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_SPECIAL_CHARS);
+            $_SESSION["city"] =  filter_input(INPUT_POST, "city", FILTER_SANITIZE_SPECIAL_CHARS);
+            header("location: bestel.php",TRUE,302);
+            exit;
         }else{
             $melding = "niet alles is ingevuld";
         }
@@ -19,6 +21,7 @@
     }
 
 ?>
+<!DOCTYPE html>
 <html lang="html">
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -75,7 +78,7 @@
 				</label>
 				<input id="lastname" type="text" class="form-control" name="lastname" required>
                 <div class="invalid-feedback">
-                    Vul uw achtenaam in.
+                    Vul uw achternaam in.
                 </div>
 			</div>
 			<div class="mb-3">
@@ -114,9 +117,9 @@
                     Vul uw woonplaats in.
                 </div>
 			</div>
-			<button type="submit" class="btn btn-dark" name="klant">Ga naar sushi's</button>
+			<button type="submit" class="btn btn-dark" name="submit">Ga naar sushi's</button>
 		</form>
-		
+        <br>
 	</div>
 </section>
 <!--end main page-->
@@ -156,6 +159,7 @@
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
         
+        console.log(forms)
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
                 .forEach(function (form) {
