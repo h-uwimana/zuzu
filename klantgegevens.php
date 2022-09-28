@@ -11,8 +11,14 @@
             $_SESSION["adres"] = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_SPECIAL_CHARS);
             $_SESSION["postcode"] =  filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_SPECIAL_CHARS);
             $_SESSION["city"] =  filter_input(INPUT_POST, "city", FILTER_SANITIZE_SPECIAL_CHARS);
-            header("location: bestel.php",TRUE,302);
-            exit;
+            
+            
+            if(!$_SESSION["mail"]){
+                $mail = "vul een geldig email in";
+            }else{
+                header("location: bestel.php",TRUE,302);
+                exit;
+            }
         }else{
             $melding = "niet alles is ingevuld";
         }
@@ -67,7 +73,8 @@
 				<label for="firstname" class="form-label">
 					Voornaam
 				</label>
-				<input id="firstname" type="text" class="form-control" name="firstname" required>
+				<input id="firstname" type="text" class="form-control" name="firstname" value="<?php if(isset($_SESSION["firstname"])){
+                    echo $_SESSION["firstname"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw voornaam in.
                 </div>
@@ -76,7 +83,8 @@
 				<label for="lastname" class="form-label">
 					Achternaam
 				</label>
-				<input id="lastname" type="text" class="form-control" name="lastname" required>
+				<input id="lastname" type="text" class="form-control" name="lastname" value="<?php if(isset($_SESSION["lastname"])){
+                    echo $_SESSION["lastname"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw achternaam in.
                 </div>
@@ -85,7 +93,9 @@
 				<label for="mail" class="form-label">
 					Email
 				</label>
-				<input id="mail" type="email" class="form-control" name="mail" required>
+				<input id="mail" type="email" class="form-control <?php if(isset($mail)){ echo "is-invalid";}?>"
+                       name="mail" value="<?php if(isset($_SESSION["mail"])){
+                    echo $_SESSION["mail"];}?>" required>
                 <div class="invalid-feedback">
                     Vul een geldige e-mail in.
                 </div>
@@ -94,7 +104,8 @@
 				<label for="adres" class="form-label">
 					Adres
 				</label>
-				<input id="adres" type="text" class="form-control" name="adres" required>
+				<input id="adres" type="text" class="form-control" name="adres" value="<?php if(isset($_SESSION["adres"])){
+                    echo $_SESSION["adres"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw adres in.
                 </div>
@@ -103,7 +114,8 @@
 				<label for="postcode" class="form-label">
 					Postcode
 				</label>
-				<input id="postcode" type="text" class="form-control" name="postcode" required>
+				<input id="postcode" type="text" class="form-control" name="postcode" value="<?php if(isset($_SESSION["postcode"])){
+                    echo $_SESSION["postcode"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw postcode in.
                 </div>
@@ -112,7 +124,8 @@
 				<label for="city" class="form-label">
 					Woonplaats
 				</label>
-				<input id="city" type="text" class="form-control" name="city" required>
+				<input id="city" type="text" class="form-control" name="city" value="<?php if(isset($_SESSION["city"])){
+                    echo $_SESSION["city"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw woonplaats in.
                 </div>
@@ -159,7 +172,6 @@
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.querySelectorAll('.needs-validation')
         
-        console.log(forms)
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
                 .forEach(function (form) {
