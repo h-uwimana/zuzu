@@ -73,8 +73,8 @@
 				<label for="firstname" class="form-label">
 					Voornaam
 				</label>
-				<input id="firstname" type="text" class="form-control" name="firstname" value="<?php if(isset($_SESSION["firstname"])){
-                    echo $_SESSION["firstname"];}?>" required>
+				<input id="firstname" type="text" class="form-control" name="firstname" value="<?php if(isset($_POST["firstname"])){
+                    echo $_POST["firstname"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw voornaam in.
                 </div>
@@ -83,8 +83,8 @@
 				<label for="lastname" class="form-label">
 					Achternaam
 				</label>
-				<input id="lastname" type="text" class="form-control" name="lastname" value="<?php if(isset($_SESSION["lastname"])){
-                    echo $_SESSION["lastname"];}?>" required>
+				<input id="lastname" type="text" class="form-control" name="lastname" value="<?php if(isset($_POST["lastname"])){
+                    echo $_POST["lastname"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw achternaam in.
                 </div>
@@ -94,8 +94,8 @@
 					Email
 				</label>
 				<input id="mail" type="email" class="form-control <?php if(isset($mail)){ echo "is-invalid";}?>"
-                       name="mail" value="<?php if(isset($_SESSION["mail"])){
-                    echo $_SESSION["mail"];}?>" required>
+                       name="mail" value="<?php if(isset($_POST["mail"])){
+                    echo $_POST["mail"];}?>" required>
                 <div class="invalid-feedback">
                     Vul een geldige e-mail in.
                 </div>
@@ -104,8 +104,8 @@
 				<label for="adres" class="form-label">
 					Adres
 				</label>
-				<input id="adres" type="text" class="form-control" name="adres" value="<?php if(isset($_SESSION["adres"])){
-                    echo $_SESSION["adres"];}?>" required>
+				<input id="adres" type="text" class="form-control" name="adres" value="<?php if(isset($_POST["adres"])){
+                    echo $_POST["adres"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw adres in.
                 </div>
@@ -114,8 +114,8 @@
 				<label for="postcode" class="form-label">
 					Postcode
 				</label>
-				<input id="postcode" type="text" class="form-control" name="postcode" value="<?php if(isset($_SESSION["postcode"])){
-                    echo $_SESSION["postcode"];}?>" required>
+				<input id="postcode" type="text" class="form-control" name="postcode" value="<?php if(isset($_POST["postcode"])){
+                    echo $_POST["postcode"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw postcode in.
                 </div>
@@ -124,8 +124,8 @@
 				<label for="city" class="form-label">
 					Woonplaats
 				</label>
-				<input id="city" type="text" class="form-control" name="city" value="<?php if(isset($_SESSION["city"])){
-                    echo $_SESSION["city"];}?>" required>
+				<input id="city" type="text" class="form-control" name="city" value="<?php if(isset($_POST["city"])){
+                    echo $_POST["city"];}?>" required>
                 <div class="invalid-feedback">
                     Vul uw woonplaats in.
                 </div>

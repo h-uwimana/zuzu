@@ -2,7 +2,6 @@
 
 <?php
     session_start();
-    var_dump($_SESSION);
 if(isset($_POST["submit"])){
     if(!empty($_POST["makiKomkommer"]) && !empty($_POST["makiAvocado"]) && !empty($_POST["nagiriZalm"]) && !empty($_POST["philadelphiaRoll"]) &&
             !empty($_POST["spicyTunaRoll"]) && !empty($_POST["californiaRoll"])){
@@ -15,13 +14,44 @@ if(isset($_POST["submit"])){
         $_SESSION["philadelphiaRoll"] = filter_input(INPUT_POST, "philadelphiaRoll", FILTER_VALIDATE_INT);
         $_SESSION["spicyTunaRoll"] =  filter_input(INPUT_POST, "spicyTunaRoll", FILTER_VALIDATE_INT);
         $_SESSION["californiaRoll"] =  filter_input(INPUT_POST, "californiaRoll", FILTER_VALIDATE_INT);
-        $aantal = array(5, 10 ,10, 5, 5, 8);
         
         
-        switch($_SESSION["makiKomkommer"] ){
         
-        }
         
+
+    
+    
+
+        
+    }if($_POST["makiKomkommer"] > 5 ){
+        $komkommer = " Het aantal dat u heeft gekozen is te hoog ";
+    }if($_POST["makiKomkommer"] <= 0){
+        $komkommer = " Het aantal dat u heeft gekozen is te laag ";
+    }
+    if($_POST["makiAvocado"] > 10 ){
+        $avocado = " Het aantal dat u heeft gekozen is te hoog ";
+    }if($_POST["makiAvocado"] <= 0){
+        $avocado = " Het aantal dat u heeft gekozen is te laag ";
+    }
+    if($_POST["nagiriZalm"] > 10 ){
+        $zalm = " Het aantal dat u heeft gekozen is te hoog ";
+    }if($_POST["nagiriZalm"] <= 0){
+        $zalm = " Het aantal dat u heeft gekozen is te laag ";
+    }
+    if($_POST["philadelphiaRoll"] > 5 ){
+        $philly = " Het aantal dat u heeft gekozen is te hoog ";
+    }if($_POST["philadelphiaRoll"] <= 0){
+        $philly = " Het aantal dat u heeft gekozen is te laag ";
+    }
+    if($_POST["spicyTunaRoll"] > 5 ){
+        $tuna = " Het aantal dat u heeft gekozen is te hoog ";
+    }if($_POST["spicyTunaRoll"] <= 0){
+        $tuna = " Het aantal dat u heeft gekozen is te laag ";
+    }
+    if($_POST["californiaRoll"] > 8 ){
+        $cally = " Het aantal dat u heeft gekozen is te hoog ";
+    }if($_POST["californiaRoll"] <= 0){
+        $cally = " Het aantal dat u heeft gekozen is te laag ";
     }
 }
 
@@ -81,65 +111,96 @@ if(isset($_POST["submit"])){
                     <label for="exampleInputEmail1" class="form-label">
                         Maki komkommer <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input id="input" type="number" class="form-control" name="makiKomkommer" value="<?php if(isset
-                    ($_SESSION["makiKomkommer"])){
-                        echo $_SESSION["makiKomkommer"];}?>" required>
+                    <input id="input" type="number" class="form-control <?php if(isset($komkommer)){ echo "is-invalid";}?>" name="makiKomkommer" value="<?php if(isset
+                    ($_POST["makiKomkommer"])){
+                        echo $_POST["makiKomkommer"];}?>" required>
                 <div id="feedback" class="invalid-feedback">
-                    Vul het juiste aantal in
+                    <?php if(isset($komkommer)){
+                        echo $komkommer;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Maki Avocado <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input id="input" type="number" class="form-control" name="makiAvocado" value="<?php if(isset
-                    ($_SESSION["makiAvocado"])){
-                        echo $_SESSION["makiAvocado"];}?>" required>
+                    <input id="input" type="number" class="form-control <?php if(isset($avocado)){ echo "is-invalid";}?>" name="makiAvocado" value="<?php if(isset
+                    ($_POST["makiAvocado"])){
+                        echo $_POST["makiAvocado"];}?>" required>
                 <div id="feedback" class="invalid-feedback">
-                    Vul het juiste aantal in
+                    <?php if(isset($avocado)){
+                        echo $avocado;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Nigiri zalm <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input id="input" type="number" class="form-control" name="nagiriZalm" value="<?php if(isset($_SESSION["nagiriZalm"])){
+                    <input id="input" type="number" class="form-control <?php if(isset($zalm)){ echo "is-invalid";}?>" name="nagiriZalm" value="<?php if(isset
+                    ($_POST["nagiriZalm"])){
                         echo $_POST["nagiriZalm"];}?>" required>
                 <div id="feedback" class="invalid-feedback">
-                    Vul het juiste aantal in
+                    <?php if(isset($zalm)){
+                        echo $zalm;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Philadelphia Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input id="input" type="number" class="form-control" name="philadelphiaRoll" value="<?php if
-                    (isset($_SESSION["philadelphiaRoll"])){
-                        echo $_SESSION["philadelphiaRoll"];}?>" required>
+                    <input id="input" type="number" class="form-control <?php if(isset($philly)){ echo "is-invalid";}?>" name="philadelphiaRoll" value="<?php if
+                    (isset($_POST["philadelphiaRoll"])){
+                        echo $_POST["philadelphiaRoll"];}?>" required>
                 <div id="feedback" class="invalid-feedback">
-                    Vul het juiste aantal in
+                    <?php if(isset($philly)){
+                        echo $philly;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         Spicy Tuna Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input id="input" type="number" class="form-control" name="spicyTunaRoll" value="<?php if(isset
-                    ($_SESSION["spicyTunaRoll"])){
-                        echo $_SESSION["spicyTunaRoll"];}?>" required>
+                    <input id="input" type="number" class="form-control <?php if(isset($tuna)){ echo "is-invalid";}?>" name="spicyTunaRoll" value="<?php if(isset
+                    ($_POST["spicyTunaRoll"])){
+                        echo $_POST["spicyTunaRoll"];}?>" required>
                 <div id="feedback" class="invalid-feedback">
-                    Vul het juiste aantal in
+                    <?php if(isset($tuna)){
+                        echo $tuna;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
                         California Roll <small class="fw-light fst-italic">(max = 8)</small>
                     </label>
-                    <input id="input" type="number" class="form-control " name="californiaRoll" value="<?php if(isset
-                    ($_SESSION["californiaRoll"])){
-                        echo $_SESSION["californiaRoll"];}?>" required>
+                    <input id="input" type="number" class="form-control <?php if(isset($cally)){ echo "is-invalid";}?>" name="californiaRoll" value="<?php if(isset
+                    ($_POST["californiaRoll"])){
+                        echo $_POST["californiaRoll"];}?>" required>
                 <div id="feedback" class="invalid-feedback">
-                    Vul het juiste aantal in
+                    <?php if(isset($cally)){
+                        echo $cally;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
                 </div>
                 <button type="submit" class="btn btn-dark" name="submit">Verzenden</button>
