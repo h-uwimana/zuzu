@@ -65,10 +65,10 @@ if(isset($_POST["submit"])){
             $cal = true;
         }
         
-        
+        if(isset($kom) && isset($avo) && isset($za) && isset($phil) && isset($tu) && isset($cal)){
         if( $kom === true && $avo === true && $za === true && $phil === true && $tu === true && $cal === true ){
             header("location: view.php");
-        }
+        }}
 
     }else{
         $niks = "U heeft niks ingevuld";
