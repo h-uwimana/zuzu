@@ -1,17 +1,147 @@
+<!DOCTYPE html>
 
-<html lang="html">
+<?php
+    session_start();
+    
+if(isset($_POST["submit"])){
+    if($_POST["makiKomkommer"] > 0 || $_POST["makiAvocado"] > 0 || $_POST["nagiriZalm"] > 0 || $_POST["philadelphiaRoll"] > 0 ||
+            $_POST["spicyTunaRoll"] > 0 || $_POST["californiaRoll"] > 0){
+    
+
+
+    
+        $_SESSION["makiKomkommer"]  = filter_input(INPUT_POST, "makiKomkommer", FILTER_VALIDATE_INT);
+        $_SESSION["makiAvocado"] =  filter_input(INPUT_POST, "makiAvocado", FILTER_VALIDATE_INT);
+        $_SESSION["nagiriZalm"] = filter_input(INPUT_POST, "nagiriZalm", FILTER_VALIDATE_INT);
+        $_SESSION["philadelphiaRoll"] = filter_input(INPUT_POST, "philadelphiaRoll", FILTER_VALIDATE_INT);
+        $_SESSION["spicyTunaRoll"] =  filter_input(INPUT_POST, "spicyTunaRoll", FILTER_VALIDATE_INT);
+        $_SESSION["californiaRoll"] =  filter_input(INPUT_POST, "californiaRoll", FILTER_VALIDATE_INT);
+    
+        if($_SESSION["makiKomkommer"]  === false){
+            $komkommer = "Vul het juiste aantal in";
+            $kom = false;
+        }if($_SESSION["makiKomkommer"] !== false && $_SESSION["makiKomkommer"] <= 5 && $_SESSION["makiKomkommer"] >= 0
+        ){
+            $kom = true;
+        }
+        
+        if($_SESSION["makiAvocado"] === false  ){
+            $avocado = "Vul het juiste aantal in";
+            $avo = false;
+            
+        }if($_SESSION["makiAvocado"] !== false && $_SESSION["makiAvocado"] <= 10 && $_SESSION["makiAvocado"] >= 0  ){
+            $avo = true;
+        }
+        
+        
+        
+        if($_SESSION["nagiriZalm"] === false ){
+            $zalm = "Vul het juiste aantal in";
+            $za = false;
+        }if($_SESSION["nagiriZalm"] !== false && $_SESSION["nagiriZalm"] <= 10 && $_SESSION["nagiriZalm"] >= 0  ){
+            $za = true;
+        }
+        
+        if($_SESSION["philadelphiaRoll"] === false ){
+            $philly = "Vul het juiste aantal in";
+            $phil = false;
+        }if($_SESSION["philadelphiaRoll"] !== false && $_SESSION["philadelphiaRoll"] <= 5 && $_SESSION["philadelphiaRoll"] >= 0  ){
+            $phil = true;
+        }
+        
+        if($_SESSION["spicyTunaRoll"] === false){
+            $tuna = "Vul het juiste aantal in";
+            $tu = false;
+        }if($_SESSION["spicyTunaRoll"] !== false && $_SESSION["spicyTunaRoll"] <= 5 && $_SESSION["spicyTunaRoll"] >= 0
+        ){
+            $tu = true;
+        }
+        
+        if($_SESSION["californiaRoll"]  === false){
+            $cally = "Vul het juiste aantal in";
+            $cal = false;
+        }if($_SESSION["californiaRoll"] !== false && $_SESSION["californiaRoll"] <= 8 && $_SESSION["californiaRoll"] >=
+                0  ){
+            $cal = true;
+        }
+        
+        
+        if( $kom === true && $avo === true && $za === true && $phil === true && $tu === true && $cal === true ){
+            header("location: view.php");
+        }
+
+    }else{
+        $niks = "U heeft niks ingevuld";
+    }
+    if($_POST["makiKomkommer"] > 5){
+        $komkommer = " Het aantal dat u heeft gekozen is te hoog ";
+        $kom = false;
+    }
+    if($_POST["makiKomkommer"] < 0){
+        $komkommer = " Het aantal dat u heeft gekozen is te laag ";
+        $kom = false;
+    }
+    if($_POST["makiAvocado"] > 10 ){
+        $avocado = " Het aantal dat u heeft gekozen is te hoog ";
+        $avo = false;
+    }
+    if($_POST["makiAvocado"] < 0){
+        $avocado = " Het aantal dat u heeft gekozen is te laag ";
+        $avo = false;
+    }
+    if($_POST["nagiriZalm"] > 10 ){
+        $zalm = " Het aantal dat u heeft gekozen is te hoog ";
+        $za = false;
+    }
+    if($_POST["nagiriZalm"] < 0){
+        $zalm = " Het aantal dat u heeft gekozen is te laag ";
+        $za = false;
+    }
+    if($_POST["philadelphiaRoll"] > 5 ){
+        $philly = " Het aantal dat u heeft gekozen is te hoog ";
+        $phil = false;
+    }
+    if($_POST["philadelphiaRoll"] < 0){
+        $philly = " Het aantal dat u heeft gekozen is te laag ";
+        $phil = false;
+    }
+    if($_POST["spicyTunaRoll"] > 5 ){
+        $tuna = " Het aantal dat u heeft gekozen is te hoog ";
+        $tu = false;
+    }
+    if($_POST["spicyTunaRoll"] < 0){
+        $tuna = " Het aantal dat u heeft gekozen is te laag ";
+        $tu = false;
+    }
+    if($_POST["californiaRoll"] > 8 ){
+        $cally = " Het aantal dat u heeft gekozen is te hoog ";
+        $cal = false;
+    }
+    if($_POST["californiaRoll"] < 0){
+        $cally = " Het aantal dat u heeft gekozen is te laag ";
+        $cal = false;
+    
+    }
+
+    
+    
+}
+
+?>
+
+
+<html lang="nl">
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                 crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/style.css">
-        <title>ZUZU-Homepage</title>
+        <title>ZUZU-Bestelpagina</title>
     </head>
     <body>
     <!--navbar-->
-    <nav class="navbar  navbar-expand-lg navbar-light bg-dark ">
+    <nav class="navbar position-sticky top-0  navbar-expand-lg navbar-light bg-dark ">
         <div class="container-fluid">
             <a class="navbar-brand text-light" href="index.php">ZUZU</a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
@@ -38,54 +168,123 @@
     <!--main page--><!--main page-->
     <section class=" container-sm  mt-3">
         <h1> Sushi's bestellen</h1>
-        <?php
-            if(isset($_POST["bestel"])){
-
-                echo $_POST["makiKomkommer"];
-            }
-        ?>
         <div class="w-50 fw-bold">
-            <form method="post">
+            <form method="post" class="needs-validation"  novalidate>
 
                 <div class="mb-3  ">
-                    <label for="exampleInputEmail1" class="form-label">
+                    <label for="komkommer" class="form-label">
                         Maki komkommer <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="text" class="form-control" name="makiKomkommer">
+                    <input id="komkommer" type="number" class="form-control <?php if(isset($komkommer)){ echo "is-invalid";
+                    }?>" name="makiKomkommer" value="<?php if(isset
+                    ($_POST["makiKomkommer"])){
+                        echo $_POST["makiKomkommer"];} else{ echo 0;}?>" required>
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($komkommer)){
+                        echo $komkommer;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
+                </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="avocado" class="form-label">
                         Maki Avocado <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input type="text" class="form-control" name="makiAvocado">
+                    <input id="avocado" type="number" class="form-control <?php if(isset($avocado)){ echo "is-invalid";
+                    }?>" name="makiAvocado" value="<?php if(isset
+                    ($_POST["makiAvocado"])){
+                        echo $_POST["makiAvocado"];} else{ echo 0;}?>" required>
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($avocado)){
+                        echo $avocado;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
+                </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="zalm" class="form-label">
                         Nigiri zalm <small class="fw-light fst-italic">(max = 10)</small>
                     </label>
-                    <input type="text" class="form-control" name="nagiriZalm">
+                    <input id="zalm" type="number" class="form-control <?php if(isset($zalm)){ echo "is-invalid";}?>"
+                           name="nagiriZalm" value="<?php if(isset
+                    ($_POST["nagiriZalm"])){
+                        echo $_POST["nagiriZalm"];} else{ echo 0;}?>" required>
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($zalm)){
+                        echo $zalm;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
+                </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="philly" class="form-label">
                         Philadelphia Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="text" class="form-control" name="philadelphiaRoll">
+                    <input id="philly" type="number" class="form-control <?php if(isset($philly)){ echo "is-invalid";
+                    }?>" name="philadelphiaRoll" value="<?php if
+                    (isset($_POST["philadelphiaRoll"])){
+                        echo $_POST["philadelphiaRoll"];} else{ echo 0;}?>" required>
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($philly)){
+                        echo $philly;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
+                </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="tuna" class="form-label">
                         Spicy Tuna Roll <small class="fw-light fst-italic">(max = 5)</small>
                     </label>
-                    <input type="text" class="form-control" name="spicyTunaRoll">
+                    <input id="tuna" type="number" class="form-control <?php if(isset($tuna)){ echo "is-invalid";}?>"
+                           name="spicyTunaRoll" value="<?php if(isset
+                    ($_POST["spicyTunaRoll"])){
+                        echo $_POST["spicyTunaRoll"];} else{ echo 0;}?>" required>
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($tuna)){
+                        echo $tuna;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
+                </div>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                    <label for="cally" class="form-label">
                         California Roll <small class="fw-light fst-italic">(max = 8)</small>
                     </label>
-                    <input type="text" class="form-control" name="californiaRoll">
+                    <input id="cally" type="number" class="form-control <?php if(isset($cally)){ echo "is-invalid";}?>"
+                           name="californiaRoll" value="<?php if(isset
+                    ($_POST["californiaRoll"])){
+                        echo $_POST["californiaRoll"];} else{ echo 0;}?>" required>
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($cally)){
+                        echo $cally;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
                 </div>
-                <button type="submit" class="btn btn-dark" name="bestel">Verzenden</button>
+                </div>
+                <input type="submit" class="btn btn-dark <?php if(isset($niks)){ echo "is-invalid";}?>"
+                       value="Verzenden" name="submit">
+                <div id="feedback" class="invalid-feedback">
+                    <?php if(isset($niks)){
+                        echo $niks;
+                    } else{
+                        echo "Vul het juiste aantal in";
+                    }
+                    ?>
+                </div>
             </form>
-
+             <br>
         </div>
     </section>
     <!--end main page-->
@@ -118,6 +317,35 @@
 
     </body>
     <script>
-
+    
+        (function () {
+            'use strict'
+        
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.querySelectorAll('.needs-validation')
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                    .forEach(function (form, index) {
+                        console.log(form[index])
+                        
+                        form.addEventListener('submit', function (event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault()
+                                event.stopPropagation()
+                                
+                                
+                            }
+                            
+                            form.classList.add('was-validated')
+                        }, false)
+                    })
+            
+            
+        })()
     </script>
+
+<?php
+
+
+?>
 </html>
