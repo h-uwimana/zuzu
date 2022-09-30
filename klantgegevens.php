@@ -1,7 +1,6 @@
 <?php
     
     session_start();
-    $_SESSION["username"] = "hussein";
     if(isset($_POST['submit'])){
         if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["mail"]) && !empty($_POST["adres"]) &&
                 !empty($_POST["postcode"]) && !empty($_POST["city"])){
@@ -35,7 +34,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	        crossorigin="anonymous"></script>
-	<title>ZUZU-Homepage</title>
+	<title>ZUZU-klantgegevens</title>
 </head>
 <body>
 <!--navbar-->
@@ -144,7 +143,7 @@
 				<p class="m-0"><strong>Contactgegevens</strong></p>
 				<p class="m-0">Restaurant ZuZu</p>
 				<p class="m-0">Appelstraat 1</p>
-				<33063306p class="m-0">1111a Fruit</33063306p>
+				<p class="m-0">1111a Fruit</p>
 				<p class="m-0">zuzu@gamil.com</p>
 				<p class="m-0">06-12345678</p>
 			</div>
@@ -170,7 +169,7 @@
         'use strict'
         
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
+        let forms = document.querySelectorAll('.needs-validation')
         
         // Loop over them and prevent submission
         Array.prototype.slice.call(forms)
