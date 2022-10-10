@@ -2,12 +2,13 @@
 
 <?php
     session_start();
+    include_once "db.php";
     
 if(isset($_POST["submit"])){
     if($_POST["makiKomkommer"] > 0 || $_POST["makiAvocado"] > 0 || $_POST["nagiriZalm"] > 0 || $_POST["philadelphiaRoll"] > 0 ||
             $_POST["spicyTunaRoll"] > 0 || $_POST["californiaRoll"] > 0){
     
-
+    
 
     
         $_SESSION["makiKomkommer"]  = filter_input(INPUT_POST, "makiKomkommer", FILTER_VALIDATE_INT);
@@ -67,6 +68,8 @@ if(isset($_POST["submit"])){
         
         if(isset($kom) && isset($avo) && isset($za) && isset($phil) && isset($tu) && isset($cal)){
         if( $kom === true && $avo === true && $za === true && $phil === true && $tu === true && $cal === true ){
+            
+    
             header("location: view.php");
         }}
 

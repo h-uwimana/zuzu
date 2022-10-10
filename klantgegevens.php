@@ -1,6 +1,7 @@
 <?php
-    
     session_start();
+    include_once "db.php";
+   
     if(isset($_POST['submit'])){
         if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["mail"]) && !empty($_POST["adres"]) &&
                 !empty($_POST["postcode"]) && !empty($_POST["city"])){
@@ -15,9 +16,23 @@
             if(!$_SESSION["mail"]){
                 $mail = "vul een geldig email in";
             }else{
+                $adres->bindValue(":straatnaam", $_SESSION["adres"]);
+                $adres->bindValue(":postcode", $_SESSION["postcode"]);
+                $adres->bindValue(":stad", $_SESSION["city"]);
+    
+                $klant->bindValue(":voornaam", $_SESSION["firstname"]);
+                $klant->bindValue(":achternaam", $_SESSION["lastname"]);
+                $klant->bindValue(":email", $_SESSION["mail"]);
+                
+    
+                try{$adres->execute(); $klant->execute();}catch(PDOException $e) {
+                    echo $sql . "<br>" . $e->getMessage();
+                }
+    
+                
                 header("location: bestel.php",TRUE,302);
-                exit;
             }
+            
         }else{
             $melding = "niet alles is ingevuld";
         }

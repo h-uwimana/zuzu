@@ -68,13 +68,11 @@ session_start();
         <div class="col-12 text-center">
             <span>
                 <?php
-                    setlocale(LC_TIME, 'nl_nl');
-                    date_default_timezone_set("Europe/Amsterdam");
+                    setlocale(LC_ALL, 'dutch');
+//                    date_default_timezone_set("Europe/Amsterdam");
                     // output
 //
                     echo "Vandaag " . strftime("%A %d %B %Y", );
-
-
                 ?>
             </span>
             <p class="">
