@@ -76,7 +76,10 @@ session_start();
                 ?>
             </span>
             <p class="">
-                Bezorgtijd vanaf nu: <?php echo date("H") + 2 . ":" .date("i"); ?>
+                 <?php if((date("l") == "monday")){echo "Vandaag zijn wij helaas gesloten";}else{ echo "Bezorgtijd vanaf nu: ".
+                        date
+                        ("H") +
+                        1 . ":" . date("i"); }?>
             </p>
         </div>
     </div>
