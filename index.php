@@ -6,6 +6,7 @@ session_start();
 
 <html lang="nl">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -111,6 +112,60 @@ session_start();
         <br>
 </section>
 <!--end main page-->
+<!---- chat ----->
+<section class="">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
+    
+    <div class="offcanvas me-5  end-0  " style="
+        width: 25rem !important;
+        height: 30rem !important;
+        margin-right:5rem !important;
+         "
+         data-bs-scroll="true" data-bs-backdrop="false"
+         tabindex="-1"
+         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        
+        <div class="offcanvas-header bg-dark text-white rounded-top" style="box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, .3);">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Chat met ons</h5>
+            <button type="button" class="btn-close text-reset bg-light btn-light" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body position-relative w-100 h-100 " style="
+                    padding: 0 !important;
+                ">
+            <div class="overflow-scroll">
+                drftghjkl;<br>thjbknlm<br>fgchvjbkn<br>ghjkfxgchvbmn,<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,<<br>fgchvjb,
+            </div>
+            
+            
+            <div class="  position-sticky bottom-0 w-100 bg-light  ps-3 py-2 overflow-hidden "
+                 style="
+                 
+                    box-shadow: 0px -4px 7px 1px rgba(0, 0, 0, .2);
+                   " >
+                <div class="row ps-2 " >
+                    <input class="form-control p-2 col-10" placeholder="Je vraag of bericht...."  name="chat" style="
+                        width:19rem !important;
+                        
+                    ">
+                    <button type="submit" name="chatSubmit" class=" btn bi bi-send  col-2 overflow-hidden" style="
+                     font-size:2rem !important;
+                     transform: rotate(44deg);
+                     margin-top: 0.3rem !important;
+                     
+                     
+                     
+                     "></button>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+</section>
+
+
+<!---- end chat ----->
 <!--footer-->
     <footer class="bottom-0 container-fluid bg-dark">
             <div class=" container-fluid text-center text-light">
@@ -140,6 +195,7 @@ session_start();
 
 </body>
 <script>
+
 
     
     
