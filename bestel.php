@@ -4,6 +4,16 @@
     session_start();
     include_once "db.php";
     
+    $query = $db->prepare("SELECT * FROM sushi");
+    
+    $query->execute();
+    
+    $sushi = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+    $bestelling = $db->prepare("INSERT INTO `bestelling` ( `klant_id`, `sushi_id`, `aantal` ) VALUES (:klant_id, :sushi_id, :aantal)");
+    $bestellingId = $db->prepare("SELECT `id` FROM `bestelling` WHERE `klant_id` = :klant_id AND `sushi_id` = :sushi_id AND `aantal` = :aantal");
+    $sushi_voorraad = $db->prepare("UPDATE `sushi` SET `voorraad`=:voorraad WHERE `naam` = :naam ");
+    
 if(isset($_POST["submit"])){
     if($_POST["makiKomkommer"] > 0 || $_POST["makiAvocado"] > 0 || $_POST["nagiriZalm"] > 0 || $_POST["philadelphiaRoll"] > 0 ||
             $_POST["spicyTunaRoll"] > 0 || $_POST["californiaRoll"] > 0){
@@ -17,7 +27,8 @@ if(isset($_POST["submit"])){
         $_SESSION["philadelphiaRoll"] = filter_input(INPUT_POST, "philadelphiaRoll", FILTER_VALIDATE_INT);
         $_SESSION["spicyTunaRoll"] =  filter_input(INPUT_POST, "spicyTunaRoll", FILTER_VALIDATE_INT);
         $_SESSION["californiaRoll"] =  filter_input(INPUT_POST, "californiaRoll", FILTER_VALIDATE_INT);
-    
+        
+        
         if($_SESSION["makiKomkommer"]  === false){
             $komkommer = "Vul het juiste aantal in";
             $kom = false;
@@ -68,8 +79,35 @@ if(isset($_POST["submit"])){
         
         if(isset($kom) && isset($avo) && isset($za) && isset($phil) && isset($tu) && isset($cal)){
         if( $kom === true && $avo === true && $za === true && $phil === true && $tu === true && $cal === true ){
-            
-    
+            $index = 0;
+            foreach($_SESSION as $key=>$value)
+            {
+                if(is_integer($value) && $key !== "klant_id" && $value > 0){
+                    if($sushi[$index]["naam"] == $key){
+                        try{
+                            $bestellingId->bindValue(":klant_id", $_SESSION["klant_id"]);
+                            $bestellingId->bindValue(":sushi_id", $sushi[$index]["id"]);
+                            $bestellingId->bindValue(":aantal", $value);
+                            $bestellingId->execute();
+                            $Bestelling_id = $bestellingId->fetchAll(PDO::FETCH_ASSOC);
+                            
+                                $bestelling->bindValue(":klant_id", $_SESSION["klant_id"]);
+                                $bestelling->bindValue(":sushi_id", $sushi[$index]["id"]);
+                                $bestelling->bindValue(":aantal", $value);
+                                $bestelling->execute();
+                                $sushi_voorraad ->bindValue(":voorraad" ,$sushi[$index]["voorraad"] - $value );
+                                $sushi_voorraad->bindValue(":naam", $key);
+                                $sushi_voorraad->execute();
+                            
+                            
+                        }catch(PDOException $e) {
+                            echo $sql . "<br>" . $e->getMessage();
+                        }
+                    }
+                    $index+=1;
+                }
+                
+            }
             header("location: view.php");
         }}
 

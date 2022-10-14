@@ -10,7 +10,8 @@
 	$cally = $_SESSION["californiaRoll"]  * 1.90;
 	$all = $komkommer + $avocado + $zalm + $philly + $tuna + $cally;
 	$total = number_format($all, 2, ',', '.');
-	
+    
+ 
 	
 
 ?>

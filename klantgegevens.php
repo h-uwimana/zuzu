@@ -1,7 +1,14 @@
 <?php
     session_start();
     include_once "db.php";
-   
+    
+    $adres = $db->prepare("INSERT INTO `adres` ( `straatnaam`, `postcode`, `stad` ) VALUES (:straatnaam, :postcode, :stad)");
+    $klant = $db->prepare("INSERT INTO `klant` ( `voornaam`, `achternaam`, `email`, `adres_id` ) VALUES (:voornaam, :achternaam, :email, :adres_id )");
+    $adresId = $db->prepare("SELECT `id` FROM `adres` WHERE `straatnaam` = :straatnaam AND `postcode` = :postcode");
+    $klantId = $db->prepare("SELECT `id` FROM `klant` WHERE `voornaam` = :voornaam AND `achternaam` = :achternaam AND `adres_id` = :adres_id");
+    
+    
+    
     if(isset($_POST['submit'])){
         if(!empty($_POST["firstname"]) && !empty($_POST["lastname"]) && !empty($_POST["mail"]) && !empty($_POST["adres"]) &&
                 !empty($_POST["postcode"]) && !empty($_POST["city"])){
@@ -16,21 +23,60 @@
             if(!$_SESSION["mail"]){
                 $mail = "vul een geldig email in";
             }else{
-                $adres->bindValue(":straatnaam", $_SESSION["adres"]);
-                $adres->bindValue(":postcode", $_SESSION["postcode"]);
-                $adres->bindValue(":stad", $_SESSION["city"]);
     
-                $klant->bindValue(":voornaam", $_SESSION["firstname"]);
-                $klant->bindValue(":achternaam", $_SESSION["lastname"]);
-                $klant->bindValue(":email", $_SESSION["mail"]);
-                
+                try{
+                    
+                    $adresId->bindValue(":postcode", $_SESSION["postcode"]);
+                    $adresId->bindValue(":straatnaam", $_SESSION["adres"]);
+                    $adresId->execute();
+                    $adres_id = $adresId->fetchAll(PDO::FETCH_ASSOC);
+                    if(!$adres_id){
+                    
+                        $adres->bindValue(":straatnaam", $_SESSION["adres"]);
+                        $adres->bindValue(":postcode", $_SESSION["postcode"]);
+                        $adres->bindValue(":stad", $_SESSION["city"]);
+                        $adres->execute();
     
-                try{$adres->execute(); $klant->execute();}catch(PDOException $e) {
+                        $adresId->execute();
+                        $adres_id = $adresId->fetchAll(PDO::FETCH_ASSOC);
+                    }
+    
+                    if(isset($adres_id[0]['id'])){
+    
+                    $klantId->bindValue(":voornaam", ucfirst($_SESSION["firstname"]));
+                    $klantId->bindValue(":achternaam", ucfirst($_SESSION["lastname"]));
+                    $klantId->bindValue(":adres_id", $adres_id[0]['id']);
+                    $klantId->execute();
+                    $klant_id = $klantId->fetchAll(PDO::FETCH_ASSOC);
+                    if(!$klant_id){
+                        
+                    
+                        $klant->bindValue(":voornaam", ucfirst($_SESSION["firstname"]));
+                        $klant->bindValue(":achternaam", ucfirst($_SESSION["lastname"]));
+                        $klant->bindValue(":email", $_SESSION["mail"]);
+                        $klant->bindValue(":adres_id", $adres_id[0]["id"]);
+                        $klant->execute();
+                        $klantId->execute();
+                        $klant_id = $klantId->fetchAll(PDO::FETCH_ASSOC);
+                        
+                    }}
+    
+                    
+                    
+                    
+                }catch(PDOException $e) {
                     echo $sql . "<br>" . $e->getMessage();
                 }
     
+    
+                if(isset($klant_id[0]["id"])){
+                    $_SESSION["klant_id"] = $klant_id[0]["id"];
+                    header("location: bestel.php",TRUE,302);
+                }
                 
-                header("location: bestel.php",TRUE,302);
+    
+                
+                
             }
             
         }else{
