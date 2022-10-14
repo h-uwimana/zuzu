@@ -4,13 +4,20 @@ session_start();
 
 ?>
 
+<?php if(isset($_SESSION["bericht"])){
+    echo "gelukt";
+    
+}?>
+
 <html lang="nl">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>ZUZU-Home</title>
 </head>
 <body>
@@ -27,6 +34,7 @@ session_start();
             <div class="navbar-nav">
                 <a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
                 <a class="nav-link active text-light" href="klantgegevens.php">Bestellen</a>
+                <span class="nav-link active text-light" onmouseover="this.style.cursor='pointer'" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">chat met ons</span>
             </div>
         </div>
     </div>
@@ -54,10 +62,10 @@ session_start();
                     }
                     $date = date("G");
                     switch($date){
-                        case $date >= 6 && $date <= 12: echo "GoedeMorgen{$name}, welkom bij ZuZu."; break;
+                        case $date >= 6 && $date <= 12: echo "Goedemorgen{$name}, welkom bij ZuZu."; break;
                         case $date >= 13 && $date < 18: echo "Goedemiddag{$name}, welkom bij ZuZu."; break;
                         default: echo "Goedenavond{$name}, welkom bij ZuZu."; break;
-                    }
+                    } 
                 ?>
             </h1>
         </div>
@@ -114,6 +122,82 @@ session_start();
         <br>
 </section>
 <!--end main page-->
+<!---- chat ----->
+<section class="">
+    
+    <div class="offcanvas me-5  end-0  " style="
+        width: 25rem !important;
+        height: 30rem !important;
+        margin-right:5rem !important;
+         "
+         data-bs-scroll="true" data-bs-backdrop="false"
+         tabindex="-1"
+         id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        
+        <div class="offcanvas-header bg-dark text-white rounded-top "style="box-shadow: 0px 4px 4px 2px rgba(0, 0,
+        0, .3);">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Chat met ons</h5>
+            <button type="button" class="btn-close text-reset bg-light btn-light" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body position-relative w-100 h-100 border border-2 border-dark " style="
+                    padding: 0 !important;
+                ">
+            <div  class="overflow-scroll  h-100 fw-bold pb-5 pt-4 ">
+                <div id="chatbox" class="pb-5"
+                <div class="row justify-content-end">
+                    <div  class="text-dark mx-4 mt-2 row justify-content-end chatbox p-2 rounded rounded-3
+                    "
+                         style="
+                    max-width: 55%;
+                    width: auto;
+                    font-size: .9rem;
+                    word-break: break-word;
+                    background: #efefef;
+                    
+                ">
+                        hello ik ben hussein en het gaat heel goed met mij dit is een test voor een lange tekst
+                    </div>
+                </div>
+    
+    
+                
+            </div>
+            </div>
+            
+            
+            <div class="   position-absolute bottom-0 w-100 bg-light  ps-3 py-2 overflow-hidden "
+                 style="
+                 
+                    box-shadow: 0px -4px 7px 1px rgba(0, 0, 0, .2);
+                   " >
+                <div class="row ps-2 " >
+                    <input id="bericht" class="form-control p-2 col-10" placeholder="Uw vraag of bericht...."
+                           name="chat"
+                    style="
+                        width:19rem !important;
+                        
+                    " required>
+                    <button id="chatSend" type="submit" name="chatSubmit" class=" btn bi bi-send  col-2
+                    overflow-hidden"
+                            style="
+                     font-size:2rem !important;
+                     transform: rotate(44deg);
+                     margin-top: 0.3rem !important;
+                     
+                     
+                     
+                     "></button>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+</section>
+
+
+<!---- end chat ----->
 <!--footer-->
     <footer class="bottom-0 container-fluid bg-dark">
             <div class=" container-fluid text-center text-light">
@@ -144,6 +228,57 @@ session_start();
 </body>
 <script>
 
+$(document).ready(function(){
+    $("#chatSend").on("click", function () {
+        $val = $("#bericht").val();
+        $bericht = `<div class="row justify-content-end ">
+                    <div  class="text-dark mx-4 mt-2 d-flex flex-row-reverse chatbox p-2 rounded rounded-3
+                    "
+                         style="
+                    max-width: 55%;
+                    width: auto;
+                    font-size: .9rem;
+                    word-break: break-word;
+                    background: #efefef;
+                    
+                ">
+                        ${$val}
+                    </div>
+                </div>`;
+        if($val !== ""){
+            $("#chatbox").append($bericht);
+        
+        
+        $("#bericht").val('');
+    
+        $.ajax({
+            url: 'chat.php',
+            type: 'POST',
+            data: 'chat='+$val,
+            success: function(result){
+                $replay = ` <div class="row justify-content-start">
+                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
+                    "
+                         style="
+                    max-width: 55%;
+                    width: auto;
+                    font-size: .9rem;
+                    word-break: break-word;
+                    
+                ">
+                        ${result}
+                    </div>
+                </div>`;
+                if(result !== ""){
+                    $("#chatbox").append($replay);}
+                // when chat goes down the scroll bar automatically comes to the bottom
+                $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+            }
+        })};
+        
+        
+    })
+})
     
     
 </script>
