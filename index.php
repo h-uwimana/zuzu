@@ -1,13 +1,19 @@
 <?php
     
 session_start();
+    
+    
+    $_SESSION = [];
+    $_SESSION["count"]  = 0;
+    
 
 ?>
 
-<?php if(isset($_SESSION["bericht"])){
-    echo "gelukt";
+<?php
+
     
-}?>
+    
+?>
 
 <html lang="nl">
 <head>
@@ -143,20 +149,19 @@ session_start();
         <div class="offcanvas-body position-relative w-100 h-100 border border-2 border-dark " style="
                     padding: 0 !important;
                 ">
-            <div  class="overflow-scroll  h-100 fw-bold pb-5 pt-4 ">
+            <div id="chatting"  class="overflow-scroll  h-100 fw-bold pb-5 pt-4 ">
                 <div id="chatbox" class="pb-5"
                 <div class="row justify-content-end">
-                    <div  class="text-dark mx-4 mt-2 row justify-content-end chatbox p-2 rounded rounded-3
+                    <div  class="text-white mx-4 mt-2 bg-primary row justify-content-end chatbox p-2 rounded rounded-3
                     "
                          style="
                     max-width: 55%;
                     width: auto;
                     font-size: .9rem;
                     word-break: break-word;
-                    background: #efefef;
                     
                 ">
-                        hello ik ben hussein en het gaat heel goed met mij dit is een test voor een lange tekst
+                        type 1 voor  admin en 0 voor klant.
                     </div>
                 </div>
     
@@ -247,14 +252,14 @@ $(document).ready(function(){
                 </div>`;
         if($val !== ""){
             $("#chatbox").append($bericht);
+            $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
         
         
         $("#bericht").val('');
-    
         $.ajax({
             url: 'chat.php',
             type: 'POST',
-            data: 'chat='+$val,
+            data: {chat: $val, count: 1},
             success: function(result){
                 $replay = ` <div class="row justify-content-start">
                     <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
@@ -272,12 +277,46 @@ $(document).ready(function(){
                 if(result !== ""){
                     $("#chatbox").append($replay);}
                 // when chat goes down the scroll bar automatically comes to the bottom
-                $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+                $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
             }
         })};
         
         
+        
+        
+        
     })
+    
+    setInterval(function(){
+    
+    
+        $.ajax({
+            url: 'chat.php',
+            type: 'POST',
+            data: {interval: 1},
+            success: function(result){
+                $replay = ` <div class="row justify-content-start">
+                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
+                    "
+                         style="
+                    max-width: 55%;
+                    width: auto;
+                    font-size: .9rem;
+                    word-break: break-word;
+                    
+                ">
+                        ${result}
+                    </div>
+                </div>`;
+                if(result !== ""){
+                    $("#chatbox").append($replay);}
+                // when chat goes down the scroll bar automatically comes to the bottom
+                $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
+            }
+        })
+    },500)
+    
+    
 })
     
     
