@@ -252,7 +252,7 @@ $(document).ready(function(){
                 </div>`;
         if($val !== ""){
             $("#chatbox").append($bericht);
-            $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
+            $("#chatting").scrollTop($("#chatting")[0].scrollHeight);}
         
         
         $("#bericht").val('');
@@ -279,7 +279,7 @@ $(document).ready(function(){
                 // when chat goes down the scroll bar automatically comes to the bottom
                 $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
             }
-        })};
+        });
         
         
         
