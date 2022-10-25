@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	include_once "db.php";
+//	alle queries staan boven, zodat ik ze kan gebruiken wanneer ik ze nodig heb
 	$klant = $chat->prepare("INSERT INTO `klant` ( `naam` ) VALUES (:naam)");
 	$getKlant = $chat->prepare("SELECT `id` FROM `klant` WHERE `chat` = 0");
 	$klantId = $chat->prepare("SELECT `id` FROM `klant` WHERE `naam` = :naam");
@@ -19,7 +20,7 @@
 	
 	
 	
-
+// elke keer wanneer ik een bericht stuur
 
 		if(isset($_POST["chat"])){
 			
@@ -177,6 +178,7 @@
 			
 		}
 		
+//		als de javascript interval een request stuurt
 		
 		if(isset($_POST["interval"]) ){
 			

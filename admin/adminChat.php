@@ -34,7 +34,7 @@
 <!--navbar-->
 <nav class=" index  position-sticky top-0 navbar navbar-expand-lg navbar-light bg-dark ">
 	<div class="container-fluid">
-		<a class="navbar-brand text-light" href="index.php">ZUZU</a>
+		<a class="navbar-brand text-light" href="../index.php">ZUZU</a>
 		<button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
 		        data-bs-target="#navbarNavAltMarkup"
 		        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,8 +42,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
-				<a class="nav-link active text-light" href="klantgegevens.php">Bestellen</a>
+				<a class="nav-link active text-light" aria-current="page" href="../index.php">Home</a>
+				<a class="nav-link active text-light" href="../klantgegevens.php">Bestellen</a>
 				<span class="nav-link active text-light" onmouseover="this.style.cursor='pointer'" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">chat met ons</span>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 <!--end navbar-->
 <!--top image-->
 <section class=" container-fluid pt-5" style="
-        background: url('img/headerimage.png');
+        background: url('../img/headerimage.png');
         background-size: cover;">
 	<div class="pt-5"></div>
 </section>
@@ -105,11 +105,11 @@
 		<div class="col d-flex justify-content-center">
 			<div class="card " style="width: 100%; position: inherit !important;
             ">
-				<a href="klantgegevens.php" style=" height:100%">
+				<a href="../klantgegevens.php" style=" height:100%">
 					<div onmouseover="this.style.cursor='pointer'" class="card-img-top" id="img"
 					     style="
                      height: 100%;
-                     background: url('img/img1.jpeg');
+                     background: url('../img/img1.jpeg');
                      background-size: cover;"
 					
 					>
@@ -121,7 +121,7 @@
 		</div>
 		<div class="col d-flex justify-content-center">
 			<div class="card " style="width=100%; position: inherit !important;">
-				<a href="klantgegevens.php"><img src="img/img2.webp" onmouseover="this.style
+				<a href="../klantgegevens.php"><img src="../img/img2.webp" onmouseover="this.style
             .cursor='pointer'" class="card-img-top" alt="..."></a>
 				<div class="card-body">
 					<span class="card-text">Keuze uit verschillende soorten sushi's</span>
@@ -235,93 +235,6 @@
 <!--end footer-->
 
 </body>
-<script>
-
-    $(document).ready(function(){
-        $("#chatSend").on("click", function () {
-            $val = $("#bericht").val();
-            $bericht = `<div class="row justify-content-end ">
-                    <div  class="text-dark mx-4 mt-2 d-flex flex-row-reverse chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    background: #efefef;
-                    
-                ">
-                        ${$val}
-                    </div>
-                </div>`;
-            if($val !== ""){
-                $("#chatbox").append($bericht);
-
-
-                $("#bericht").val('');
-                $.ajax({
-                    url: 'chat.php',
-                    type: 'POST',
-                    data: {chat: $val, count: 1},
-                    success: function(result){
-                        $replay = ` <div class="row justify-content-start">
-                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    
-                ">
-                        ${result}
-                    </div>
-                </div>`;
-                        if(result !== ""){
-                            $("#chatbox").append($replay);}
-                        // when chat goes down the scroll bar automatically comes to the bottom
-                        $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
-                    }
-                })};
-
-
-
-
-
-        })
-
-        setInterval(function(){
-
-
-            $.ajax({
-                url: 'chat.php',
-                type: 'POST',
-                data: {interval: 1},
-                success: function(result){
-                    $replay = ` <div class="row justify-content-start">
-                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    
-                ">
-                        ${result}
-                    </div>
-                </div>`;
-                    if(result !== ""){
-                        $("#chatbox").append($replay);}
-                    // when chat goes down the scroll bar automatically comes to the bottom
-                    $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
-                }
-            })
-        },7000)
-
-
-    })
-
-
+<script src="js/main.js">
 </script>
 </html>
