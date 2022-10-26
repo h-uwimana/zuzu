@@ -2,8 +2,9 @@
     
 session_start();
     
+    phpinfo();
     
-    $_SESSION = [];
+    
     $_SESSION["count"]  = 0;
     
 
@@ -41,6 +42,7 @@ session_start();
                 <a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
                 <a class="nav-link active text-light" href="klantgegevens.php">Bestellen</a>
                 <span class="nav-link active text-light" onmouseover="this.style.cursor='pointer'" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">chat met ons</span>
+                <a class="nav-link active text-light text-xl-end" href="login.php">Login</a>
             </div>
         </div>
     </div>
@@ -140,7 +142,7 @@ session_start();
          tabindex="-1"
          id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         
-        <div class="offcanvas-header bg-dark text-white rounded-top "style="box-shadow: 0px 4px 4px 2px rgba(0, 0,
+        <div class="offcanvas-header bg-dark text-white rounded-top " style="box-shadow: 0 4px 4px 2px rgba(0, 0,
         0, .3);">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Chat met ons</h5>
             <button type="button" class="btn-close text-reset bg-light btn-light" data-bs-dismiss="offcanvas"
@@ -150,7 +152,7 @@ session_start();
                     padding: 0 !important;
                 ">
             <div id="chatting"  class="overflow-scroll  h-100 fw-bold pb-5 pt-4 ">
-                <div id="chatbox" class="pb-5"
+                <div id="chatbox" class="pb-5">
                 <div class="row justify-content-end">
                     <div  class="text-white mx-4 mt-2 bg-primary row justify-content-end chatbox p-2 rounded rounded-3
                     "
@@ -174,9 +176,9 @@ session_start();
             <div class="   position-absolute bottom-0 w-100 bg-light  ps-3 py-2 overflow-hidden "
                  style="
                  
-                    box-shadow: 0px -4px 7px 1px rgba(0, 0, 0, .2);
+                    box-shadow: 0 -4px 7px 1px rgba(0, 0, 0, .2);
                    " >
-                <div class="row ps-2 " >
+                <form class="row ps-2 " >
                     <input id="bericht" class="form-control p-2 col-10" placeholder="Uw vraag of bericht...."
                            name="chat"
                     style="
@@ -194,10 +196,10 @@ session_start();
                      
                      "></button>
                     
-                </div>
+                </form>
             </div>
             
-            
+        </div>
         </div>
 </section>
 
@@ -237,7 +239,7 @@ $(document).ready(function(){
     $("#chatSend").on("click", function () {
         $val = $("#bericht").val();
         $bericht = `<div class="row justify-content-end ">
-                    <div  class="text-dark mx-4 mt-2 d-flex flex-row-reverse chatbox p-2 rounded rounded-3
+                    <div  class="text-dark mx-4 mt-2 d-flex  chatbox p-2 rounded rounded-3
                     "
                          style="
                     max-width: 55%;

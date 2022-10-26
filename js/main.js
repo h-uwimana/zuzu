@@ -40,7 +40,7 @@ $(document).ready(function(){
                 </div>`;
                     if(result !== ""){
                         $("#chatbox").append($replay);}
-                    // when chat goes down the scroll bar automatically comes to the bottom
+                    // when index.php goes down the scroll bar automatically comes to the bottom
                     $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
                 }
             })};
@@ -74,7 +74,7 @@ $(document).ready(function(){
                 </div>`;
                 if(result !== ""){
                     $("#chatbox").append($replay);}
-                // when chat goes down the scroll bar automatically comes to the bottom
+                // when index.php goes down the scroll bar automatically comes to the bottom
                 $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
             }
         })

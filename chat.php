@@ -3,26 +3,26 @@
 	include_once "db.php";
 //	alle queries staan boven, zodat ik ze kan gebruiken wanneer ik ze nodig heb
 	$klant = $chat->prepare("INSERT INTO `klant` ( `naam` ) VALUES (:naam)");
-	$getKlant = $chat->prepare("SELECT `id` FROM `klant` WHERE `chat` = 0");
+	$getKlant = $chat->prepare("SELECT `id` FROM `klant` WHERE `index.php` = 0");
 	$klantId = $chat->prepare("SELECT `id` FROM `klant` WHERE `naam` = :naam");
-	$klantUpdate = $chat->prepare("UPDATE `klant` SET `chat` = 1 WHERE `id` = :id");
+	$klantUpdate = $chat->prepare("UPDATE `klant` SET `index.php` = 1 WHERE `id` = :id");
 	
-	$bericht =  $chat->prepare("INSERT INTO `chat` ( `klant_id`, `service_id`, `chat_regel`, `sender` ) VALUES (:klant_id, :service_id, :chat_regel, :sender)");
-	$getBericht = $chat->prepare("SELECT `chat_regel` , `sender` FROM `chat` WHERE `klant_id` = :klant_id AND `service_id` = :service_id AND `sender` = :sender");
+	$bericht =  $chat->prepare("INSERT INTO `index.php` ( `klant_id`, `service_id`, `chat_regel`, `sender` ) VALUES (:klant_id, :service_id, :chat_regel, :sender)");
+	$getBericht = $chat->prepare("SELECT `chat_regel` , `sender` FROM `index.php` WHERE `klant_id` = :klant_id AND `service_id` = :service_id AND `sender` = :sender");
 	
-	$serviceUpdate = $chat->prepare("UPDATE `service` SET `chat` = 1 WHERE `id` = :id");
+	$serviceUpdate = $chat->prepare("UPDATE `service` SET `index.php` = 1 WHERE `id` = :id");
 	$service = $chat->prepare("INSERT INTO `service` ( `naam` ) VALUES (:naam)");
 	$getService = $chat->prepare("SELECT `id` FROM `service` WHERE `chat` = 0");
 	$serviceId = $chat->prepare("SELECT `id` FROM `service` WHERE `naam` = :naam");
 	
 	
-	$chat = filter_input(INPUT_POST, "chat", FILTER_SANITIZE_STRING);
+	$chat = filter_input(INPUT_POST, "index.php", FILTER_SANITIZE_STRING);
 	
 	
 	
 // elke keer wanneer ik een bericht stuur
 
-		if(isset($_POST["chat"])){
+		if(isset($_POST["index.php"])){
 			
 			
 			try{
