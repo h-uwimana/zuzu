@@ -1,5 +1,14 @@
 <?php
-session_start();
+    session_start();
+    include_once "../db.php";
+    $getKlant = $chat->prepare("SELECT `id` , `naam` FROM `klant` WHERE `chat` = 1");
+    if($getKlant->execute()) {
+        $klanten = $getKlant->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+    
+    
     
     if(!isset($_SESSION["login"]) && $_SESSION["login"] !== true){
         header("location: ../login.php");
@@ -28,6 +37,11 @@ session_start();
     #klanten{
         transition: .3s;
         transition-timing-function: ease-in-out;
+    }
+
+    #klanten:hover{
+        filter: brightness(80%);
+        cursor:pointer;
     }
     html {
         width: 100%;
@@ -59,19 +73,33 @@ session_start();
 <!--end navbar-->
 	<div class="d-flex justify-content-center py-5  mt-3 align-items-center" style="height:90vh;">
 		<div class="card border-0 rounded rounded-2 mb-3 h-100 bg-dark" style=" min-height: 60vh; ">
-			<div class="row g-0 h-100">
-				<div class="col-md-4 links bg-secondary  rounded-start" style="width: 23vw">
+			<div class="row g-0 h-100 " style="">
+				<div id="sidechat" class="col-md-4 links h-100  bg-secondary  overflow-scroll rounded-start" style="width:
+				23vw; overflow-x: hidden !important;">
                     
-                    <div id="klanten" class="  border border-light p-3  d-flex border-start-0 border-end-0 border-top-0"
-                    onclick="this.style.background = '#212529'" onmouseover="this.style.cursor='pointer'
-                    this.style.filter ='brightness(80%)' " onmouseleave="this.style.filter ='brightness(100%)'">
-                        <img src="../img/blank.jpg" class="col-4 rounded rounded-circle"  style="max-width: 5vw">
-                        <div class="ms-3 mt-2 " style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                            <p class="fw-bold mb-1"> Hussein Uwimana</p>
-                            <span class="overflow-hidden mt-1 fw-lighter text-light" >
-                                <small>erdoklredoiklerosdklercreikmdrekddosiklecdsklm</small></span>
-                        </div>
-                    </div>
+                    
+                    <?php
+                    
+                        if(isset($klanten)){
+                            foreach($klanten as $key=>$value){
+                                foreach($value as $key=>$value){
+                                    
+                                    if(!intval($value)){
+                                        echo "<div id='klanten' class='  border border-light p-3  d-flex border-start-0 border-end-0 border-top-0'
+                                        onclick='this.style.background =". '"#212529"'."'>
+                                            <img src='../img/blank.jpg' class='col-4 rounded rounded-circle'  style='max-width: 5vw'>
+                                            <div class='ms-3 mt-2 ' style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>
+                                                <p class='fw-bold mb-1'> {$value}</p>
+                                                <span class='overflow-hidden mt-1 fw-lighter text-light' >
+                                                    <small id='previewBericht'>erdoklredoiklerosdklercreikmdrekddosiklecdsklm</small></span>
+                                            </div>
+                                        </div>";
+                                    }
+                                }
+                            }
+                        }
+                    
+                    ?>
                     
                     
 				</div>

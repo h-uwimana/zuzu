@@ -2,7 +2,7 @@
     
 session_start();
     
-    phpinfo();
+
     
     
     $_SESSION["count"]  = 0;
@@ -84,7 +84,7 @@ session_start();
         <div class="col-12 text-center">
             <span>
                 <?php
-                    setlocale(LC_ALL, 'dutch');
+                    setlocale(LC_ALL, 'europe/amsterdam');
 //                    date_default_timezone_set("Europe/Amsterdam");
                     // output
 //
@@ -153,8 +153,8 @@ session_start();
                 ">
             <div id="chatting"  class="overflow-scroll  h-100 fw-bold pb-5 pt-4 ">
                 <div id="chatbox" class="pb-5">
-                <div class="row justify-content-end">
-                    <div  class="text-white mx-4 mt-2 bg-primary row justify-content-end chatbox p-2 rounded rounded-3
+                <div class="row justify-content-start">
+                    <div  class="text-white mx-4 mt-2 bg-primary chatbox p-2 rounded rounded-3
                     "
                          style="
                     max-width: 55%;
@@ -163,7 +163,13 @@ session_start();
                     word-break: break-word;
                     
                 ">
-                        type 1 voor  admin en 0 voor klant.
+                        <?php
+                            switch($date){
+                                case $date >= 6 && $date <= 12: echo "Goedemorgen, wat is uw naam?"; break;
+                                case $date >= 13 && $date < 18: echo "Goedemiddag, wat is uw naam?"; break;
+                                default: echo "Goedenavond, wat is uw naam?"; break;
+                            }
+                        ?>
                     </div>
                 </div>
     
@@ -233,93 +239,7 @@ session_start();
 <!--end footer-->
 
 </body>
-<script>
-
-$(document).ready(function(){
-    $("#chatSend").on("click", function () {
-        $val = $("#bericht").val();
-        $bericht = `<div class="row justify-content-end ">
-                    <div  class="text-dark mx-4 mt-2 d-flex  chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    background: #efefef;
-                    
-                ">
-                        ${$val}
-                    </div>
-                </div>`;
-        if($val !== ""){
-            $("#chatbox").append($bericht);
-            $("#chatting").scrollTop($("#chatting")[0].scrollHeight);}
-        
-        
-        $("#bericht").val('');
-        $.ajax({
-            url: 'chat.php',
-            type: 'POST',
-            data: {chat: $val, count: 1},
-            success: function(result){
-                $replay = ` <div class="row justify-content-start">
-                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    
-                ">
-                        ${result}
-                    </div>
-                </div>`;
-                if(result !== ""){
-                    $("#chatbox").append($replay);}
-                // when chat goes down the scroll bar automatically comes to the bottom
-                $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
-            }
-        });
-        
-        
-        
-        
-        
-    })
-    
-    setInterval(function(){
-    
-    
-        $.ajax({
-            url: 'chat.php',
-            type: 'POST',
-            data: {interval: 1},
-            success: function(result){
-                $replay = ` <div class="row justify-content-start">
-                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    
-                ">
-                        ${result}
-                    </div>
-                </div>`;
-                if(result !== ""){
-                    $("#chatbox").append($replay);}
-                // when chat goes down the scroll bar automatically comes to the bottom
-                $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
-            }
-        })
-    },500)
-    
-    
-})
+<script src="js/main.js">
     
     
 </script>
