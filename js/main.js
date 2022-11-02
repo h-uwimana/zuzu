@@ -23,7 +23,7 @@ $(document).ready(function(){
             $.ajax({
                 url: 'chat.php',
                 type: 'POST',
-                data: {chat: $val, count: 1},
+                data: {user: "klant", chat: $val, count: 1},
                 success: function(result){
                     $replay = ` <div class="row justify-content-start">
                     <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
@@ -40,7 +40,7 @@ $(document).ready(function(){
                 </div>`;
                     if(result !== ""){
                         $("#chatbox").append($replay);}
-                    // when index.php goes down the scroll bar automatically comes to the bottom
+                    // when chat goes down the scroll bar automatically comes to the bottom
                     $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
                 }
             })};
@@ -57,7 +57,7 @@ $(document).ready(function(){
         $.ajax({
             url: 'chat.php',
             type: 'POST',
-            data: {interval: 1},
+            data: {user: "klant", interval: 1},
             success: function(result){
                 $replay = ` <div class="row justify-content-start">
                     <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
@@ -74,7 +74,7 @@ $(document).ready(function(){
                 </div>`;
                 if(result !== ""){
                     $("#chatbox").append($replay);}
-                // when index.php goes down the scroll bar automatically comes to the bottom
+                // when chat goes down the scroll bar automatically comes to the bottom
                 $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
             }
         })

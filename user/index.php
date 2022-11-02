@@ -1,10 +1,7 @@
 <?php
     session_start();
     include_once "../db.php";
-    $getKlant = $chat->prepare("SELECT `id` , `naam` FROM `klant` WHERE `chat` = 1");
-    if($getKlant->execute()) {
-        $klanten = $getKlant->fetchAll(PDO::FETCH_ASSOC);
-    }
+  
     
     
     
@@ -74,35 +71,7 @@
 	<div class="d-flex justify-content-center py-5  mt-3 align-items-center" style="height:90vh;">
 		<div class="card border-0 rounded rounded-2 mb-3 h-100 bg-dark" style=" min-height: 60vh; ">
 			<div class="row g-0 h-100 " style="">
-				<div id="sidechat" class="col-md-4 links h-100  bg-secondary  overflow-scroll rounded-start" style="width:
-				23vw; overflow-x: hidden !important;">
-                    
-                    
-                    <?php
-                    
-                        if(isset($klanten)){
-                            foreach($klanten as $key=>$value){
-                                foreach($value as $key=>$value){
-                                    
-                                    if(!intval($value)){
-                                        echo "<div id='klanten' class='  border border-light p-3  d-flex border-start-0 border-end-0 border-top-0'
-                                        onclick='this.style.background =". '"#212529"'."'>
-                                            <img src='../img/blank.jpg' class='col-4 rounded rounded-circle'  style='max-width: 5vw'>
-                                            <div class='ms-3 mt-2 ' style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>
-                                                <p class='fw-bold mb-1'> {$value}</p>
-                                                <span class='overflow-hidden mt-1 fw-lighter text-light' >
-                                                    <small id='previewBericht'>erdoklredoiklerosdklercreikmdrekddosiklecdsklm</small></span>
-                                            </div>
-                                        </div>";
-                                    }
-                                }
-                            }
-                        }
-                    
-                    ?>
-                    
-                    
-				</div>
+				
 				<div class="col-md-4 h-100">
 					<div class="card-body p-0" style="width: 40vw">
                         
@@ -119,7 +88,7 @@
                     word-break: break-word;
                     
                 ">
-                                        type 1 voor  admin en 0 voor klant.
+                                        eeen moment....
                                     </div>
                                 </div>
                             
