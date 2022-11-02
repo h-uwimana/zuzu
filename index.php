@@ -2,8 +2,9 @@
     
 session_start();
     
+
     
-    $_SESSION = [];
+    
     $_SESSION["count"]  = 0;
     
 
@@ -41,6 +42,7 @@ session_start();
                 <a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
                 <a class="nav-link active text-light" href="klantgegevens.php">Bestellen</a>
                 <span class="nav-link active text-light" onmouseover="this.style.cursor='pointer'" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">chat met ons</span>
+                <a class="nav-link active text-light text-xl-end" href="login.php">Login</a>
             </div>
         </div>
     </div>
@@ -82,7 +84,7 @@ session_start();
         <div class="col-12 text-center">
             <span>
                 <?php
-                    setlocale(LC_ALL, 'dutch');
+                    setlocale(LC_ALL, 'europe/amsterdam');
 //                    date_default_timezone_set("Europe/Amsterdam");
                     // output
 //
@@ -140,7 +142,7 @@ session_start();
          tabindex="-1"
          id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         
-        <div class="offcanvas-header bg-dark text-white rounded-top "style="box-shadow: 0px 4px 4px 2px rgba(0, 0,
+        <div class="offcanvas-header bg-dark text-white rounded-top " style="box-shadow: 0 4px 4px 2px rgba(0, 0,
         0, .3);">
             <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Chat met ons</h5>
             <button type="button" class="btn-close text-reset bg-light btn-light" data-bs-dismiss="offcanvas"
@@ -150,9 +152,9 @@ session_start();
                     padding: 0 !important;
                 ">
             <div id="chatting"  class="overflow-scroll  h-100 fw-bold pb-5 pt-4 ">
-                <div id="chatbox" class="pb-5"
-                <div class="row justify-content-end">
-                    <div  class="text-white mx-4 mt-2 bg-primary row justify-content-end chatbox p-2 rounded rounded-3
+                <div id="chatbox" class="pb-5">
+                <div class="row justify-content-start">
+                    <div  class="text-white mx-4 mt-2 bg-primary chatbox p-2 rounded rounded-3
                     "
                          style="
                     max-width: 55%;
@@ -161,7 +163,13 @@ session_start();
                     word-break: break-word;
                     
                 ">
-                        type 1 voor  admin en 0 voor klant.
+                        <?php
+                            switch($date){
+                                case $date >= 6 && $date <= 12: echo "Goedemorgen, wat is uw naam?"; break;
+                                case $date >= 13 && $date < 18: echo "Goedemiddag, wat is uw naam?"; break;
+                                default: echo "Goedenavond, wat is uw naam?"; break;
+                            }
+                        ?>
                     </div>
                 </div>
     
@@ -174,9 +182,9 @@ session_start();
             <div class="   position-absolute bottom-0 w-100 bg-light  ps-3 py-2 overflow-hidden "
                  style="
                  
-                    box-shadow: 0px -4px 7px 1px rgba(0, 0, 0, .2);
+                    box-shadow: 0 -4px 7px 1px rgba(0, 0, 0, .2);
                    " >
-                <div class="row ps-2 " >
+                <form class="row ps-2 " >
                     <input id="bericht" class="form-control p-2 col-10" placeholder="Uw vraag of bericht...."
                            name="chat"
                     style="
@@ -194,10 +202,10 @@ session_start();
                      
                      "></button>
                     
-                </div>
+                </form>
             </div>
             
-            
+        </div>
         </div>
 </section>
 
@@ -231,93 +239,7 @@ session_start();
 <!--end footer-->
 
 </body>
-<script>
-
-$(document).ready(function(){
-    $("#chatSend").on("click", function () {
-        $val = $("#bericht").val();
-        $bericht = `<div class="row justify-content-end ">
-                    <div  class="text-dark mx-4 mt-2 d-flex flex-row-reverse chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    background: #efefef;
-                    
-                ">
-                        ${$val}
-                    </div>
-                </div>`;
-        if($val !== ""){
-            $("#chatbox").append($bericht);
-            $("#chatting").scrollTop($("#chatting")[0].scrollHeight);}
-        
-        
-        $("#bericht").val('');
-        $.ajax({
-            url: 'chat.php',
-            type: 'POST',
-            data: {chat: $val, count: 1},
-            success: function(result){
-                $replay = ` <div class="row justify-content-start">
-                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    
-                ">
-                        ${result}
-                    </div>
-                </div>`;
-                if(result !== ""){
-                    $("#chatbox").append($replay);}
-                // when chat goes down the scroll bar automatically comes to the bottom
-                $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
-            }
-        });
-        
-        
-        
-        
-        
-    })
-    
-    setInterval(function(){
-    
-    
-        $.ajax({
-            url: 'chat.php',
-            type: 'POST',
-            data: {interval: 1},
-            success: function(result){
-                $replay = ` <div class="row justify-content-start">
-                    <div  class="text-light bg-primary mx-4 mt-2 chatbox p-2 rounded rounded-3
-                    "
-                         style="
-                    max-width: 55%;
-                    width: auto;
-                    font-size: .9rem;
-                    word-break: break-word;
-                    
-                ">
-                        ${result}
-                    </div>
-                </div>`;
-                if(result !== ""){
-                    $("#chatbox").append($replay);}
-                // when chat goes down the scroll bar automatically comes to the bottom
-                $("#chatting").scrollTop($("#chatting")[0].scrollHeight);
-            }
-        })
-    },500)
-    
-    
-})
+<script src="js/main.js">
     
     
 </script>
