@@ -82,6 +82,7 @@ if(isset($_POST["submit"])){
             $index = 0;
             foreach($_SESSION as $key=>$value)
             {
+                echo $key. " ". $value. "<br>";
                 if(is_integer($value) && $key !== "klant_id" && $value > 0){
                     if($sushi[$index]["naam"] == $key){
                         try{
@@ -108,61 +109,13 @@ if(isset($_POST["submit"])){
                 }
                 
             }
-            header("location: view.php");
+//            header("location: view.php");
         }}
 
     }else{
         $niks = "U heeft niks ingevuld";
     }
-    if($_POST["makiKomkommer"] > 5){
-        $komkommer = " Het aantal dat u heeft gekozen is te hoog ";
-        $kom = false;
-    }
-    if($_POST["makiKomkommer"] < 0){
-        $komkommer = " Het aantal dat u heeft gekozen is te laag ";
-        $kom = false;
-    }
-    if($_POST["makiAvocado"] > 10 ){
-        $avocado = " Het aantal dat u heeft gekozen is te hoog ";
-        $avo = false;
-    }
-    if($_POST["makiAvocado"] < 0){
-        $avocado = " Het aantal dat u heeft gekozen is te laag ";
-        $avo = false;
-    }
-    if($_POST["nagiriZalm"] > 10 ){
-        $zalm = " Het aantal dat u heeft gekozen is te hoog ";
-        $za = false;
-    }
-    if($_POST["nagiriZalm"] < 0){
-        $zalm = " Het aantal dat u heeft gekozen is te laag ";
-        $za = false;
-    }
-    if($_POST["philadelphiaRoll"] > 5 ){
-        $philly = " Het aantal dat u heeft gekozen is te hoog ";
-        $phil = false;
-    }
-    if($_POST["philadelphiaRoll"] < 0){
-        $philly = " Het aantal dat u heeft gekozen is te laag ";
-        $phil = false;
-    }
-    if($_POST["spicyTunaRoll"] > 5 ){
-        $tuna = " Het aantal dat u heeft gekozen is te hoog ";
-        $tu = false;
-    }
-    if($_POST["spicyTunaRoll"] < 0){
-        $tuna = " Het aantal dat u heeft gekozen is te laag ";
-        $tu = false;
-    }
-    if($_POST["californiaRoll"] > 8 ){
-        $cally = " Het aantal dat u heeft gekozen is te hoog ";
-        $cal = false;
-    }
-    if($_POST["californiaRoll"] < 0){
-        $cally = " Het aantal dat u heeft gekozen is te laag ";
-        $cal = false;
     
-    }
 
     
     
@@ -343,14 +296,14 @@ if(isset($_POST["submit"])){
                     <p class="m-0">06-12345678</p>
                 </div>
                 <div class="col mt-4">
-                    <p class="m-0"><strong>Openingstijden</strong></p>
-                    <p class="m-0">Maandag:</p>
-                    <p class="m-0">Dinsdag:</p>
-                    <p class="m-0">Woensdag:</p>
-                    <p class="m-0">Donderdag:</p>
-                    <p class="m-0">Vrijdag:</p>
-                    <p class="m-0">Zaterdag:</p>
-                    <p class="m-0">Zondag:</p>
+                    <h4>Openingstijden</h4>
+                    Maandag = Gesloten<br>
+                    Dinsdag =16:00 - 22:00<br>
+                    Woensdag =16:00 - 22:00<br>
+                    Donderdag =16:00 - 22:00<br>
+                    Vrijdag = 15:00 - 22:00<br>
+                    Zaterdag = 15:00 - 22:00<br>
+                    Zondag = Gesloten<br>
                 </div>
             </div>
             <div>
