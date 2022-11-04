@@ -71,8 +71,7 @@
 							
 							
 						} else {
-							echo "Er zijn op dit moment geen vragen. Een moment geduld alstublieft."
-								. $_SESSION["serviceId"][0]["id"];
+						
 						}
 						
 					}
@@ -127,8 +126,7 @@
 						
 						
 					}else{
-						$getService->execute();
-						$serv = $getService->fetchAll(PDO::FETCH_ASSOC);
+						
 						$_SESSION["username"] = $chat;
 						$_SESSION["klantId"] = $klant_id;
 						$_SESSION["serviceId"] = $serv;

@@ -82,7 +82,6 @@ if(isset($_POST["submit"])){
             $index = 0;
             foreach($_SESSION as $key=>$value)
             {
-                echo $key. " ". $value. "<br>";
                 if(is_integer($value) && $key !== "klant_id" && $value > 0){
                     if($sushi[$index]["naam"] == $key){
                         try{
@@ -109,7 +108,7 @@ if(isset($_POST["submit"])){
                 }
                 
             }
-//            header("location: view.php");
+            header("location: view.php");
         }}
 
     }else{
